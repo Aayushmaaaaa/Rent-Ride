@@ -174,3 +174,10 @@
     transform: skew(-15deg);
     opacity: 0.8;
   }
+  
+  .error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 10px;
+  }
+  
