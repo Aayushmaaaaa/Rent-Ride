@@ -1,30 +1,31 @@
-import React, { useState } from 'react';
-import './DriftySignup.css'; // Reusing the same CSS for consistency
+import React, { useState } from "react";
+import "./DriftySignup.css"; // Reusing the same CSS for consistency
 
-import googleLogo from '../assets/google-logo.png';
-import bmwCar from '../assets/bmw-car.png';
-import driftyLogo from '../assets/drifty-logo.png';
+import googleLogo from "../assets/google-logo.png";
+import bmwCar from "../assets/bmw-car.png";
+import driftyLogo from "../assets/drifty-logo.png";
 
 function DriftySignup() {
   // States for input values and errors
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
   // Validation function for email and password
   const validateForm = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Simple email regex
     if (!emailRegex.test(email)) {
-      setError('Please enter a valid email.');
+      setError("Please enter a valid email.");
       return false;
     }
 
     if (password.length < 6) {
-      setError('Password must be at least 6 characters.');
+      setError("Password must be at least 6 characters.");
       return false;
     }
 
-    setError(''); // Clear error if validation passes
+    setError(""); // Clear error if validation passes
     return true;
   };
 
@@ -33,7 +34,7 @@ function DriftySignup() {
     e.preventDefault();
     if (validateForm()) {
       // Proceed with signup (you can integrate backend logic here)
-      alert('Signup successful');
+      alert("Signup successful");
     }
   };
 
@@ -50,6 +51,12 @@ function DriftySignup() {
         </button>
 
         <div className="or-divider">OR</div>
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
 
         <input
           type="text"
@@ -66,7 +73,9 @@ function DriftySignup() {
 
         {error && <div className="error-message">{error}</div>}
 
-        <button className="signup-button" onClick={handleSubmit}>SIGN UP</button>
+        <button className="signup-button" onClick={handleSubmit}>
+          SIGN UP
+        </button>
 
         <p className="login-link">
           Already Have an Account? <a href="/login">LOGIN</a>
@@ -86,4 +95,3 @@ function DriftySignup() {
 }
 
 export default DriftySignup;
-
