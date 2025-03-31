@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Signup from './components/Signup';
+import Verification from './components/Verification';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [isVerified, setIsVerified] = useState(false);
+
+    const handleSignupClick = () => {
+        setIsVerified(true);
+    };
+
+    return (
+        <Router>
+            <div className="App">
+                <Routes>
+                    <Route path="/" element={isVerified ? <Verification /> : <Signup onSignupClick={handleSignupClick} />} />
+                    {/* Removed redundant /verification route */}
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
 export default App;

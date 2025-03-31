@@ -1,0 +1,97 @@
+.verification-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: sans-serif;
+    background-color: white;
+  }
+  
+  .verification-form {
+    width: 400px;
+    padding: 40px;
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 1em;
+    margin-bottom: 30px;
+  }
+  
+  .code-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .code-inputs input {
+    width: 50px;
+    height: 60px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1.5em;
+    text-align: center;
+    outline: none;
+  }
+  
+  .code-inputs input:focus {
+    border-color: #007bff;
+  }
+  
+  .resend-link {
+    font-size: 0.9em;
+    margin-bottom: 30px;
+  }
+  
+  .resend-link button {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 0.9em;
+    padding: 0;
+  }
+  
+  .verify-button,
+  .cancel-button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 15px;
+  }
+  
+  .verify-button {
+    background-color: black;
+    color: white;
+  }
+  
+  .cancel-button {
+    background-color: #f0f0f0;
+    color: black;
+  }
+  
+  .logo-container {
+    margin-bottom: 20px;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .logo img {
+    width: 100px; /* Adjust logo width as needed */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
