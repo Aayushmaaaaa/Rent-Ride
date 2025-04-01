@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Signup.css';
 import googleLogo from '../assets/google.png';
 import appleLogo from '../assets/apple-logo.png';
@@ -12,6 +12,7 @@ function Signup({ onSignupClick }) {
   const [password, setPassword] = useState('');
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const validateForm = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -42,7 +43,8 @@ function Signup({ onSignupClick }) {
 
       // Simulate successful signup (remove the fetch call)
       console.log('Simulating successful signup...');
-      onSignupClick(); // Navigate to Verification
+      onSignupClick(); // Trigger signup completion and navigate to verification
+      navigate("/verification"); // Navigate directly to verification page
     }
   };
 
@@ -107,3 +109,4 @@ function Signup({ onSignupClick }) {
 }
 
 export default Signup;
+
