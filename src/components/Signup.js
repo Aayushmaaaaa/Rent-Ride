@@ -1,50 +1,68 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import './Signup.css';
-import googleLogo from '../assets/google.png';
-import appleLogo from '../assets/apple-logo.png';
-import audiCar from '../assets/audi-car.png';
-import driftyLogo from '../assets/drifty-logo.png';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./Signup.css";
+import googleLogo from "../assets/google.png";
+import appleLogo from "../assets/apple-logo.png";
+import audiCar from "../assets/audi-car.png";
+import driftyLogo from "../assets/drifty-logo.png";
 
 function Signup({ onSignupClick }) {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [agreeTerms, setAgreeTerms] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const validateForm = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!name) {
-      setError('Please enter your name.');
+      setError("Please enter your name.");
       return false;
     }
     if (!emailRegex.test(email)) {
-      setError('Please enter a valid email address.');
+      setError("Please enter a valid email address.");
       return false;
     }
     if (password.length < 6) {
-      setError('Password must be at least 6 characters.');
+      setError("Password must be at least 6 characters.");
       return false;
     }
     if (!agreeTerms) {
-      setError('Please agree to the terms and policy.');
+      setError("Please agree to the terms and policy.");
       return false;
     }
-    setError('');
+    setError("");
     return true;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateForm()) {
-      console.log('Signup submitted:', { name, email, password, agreeTerms });
+    if (!validateForm()) return;
 
-      // Simulate successful signup (remove the fetch call)
-      console.log('Simulating successful signup...');
-      onSignupClick(); // Trigger signup completion and navigate to verification
-      navigate("/verification"); // Navigate directly to verification page
+    setLoading(true);
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password }),
+      });
+
+      const data = await response.json();
+      setLoading(false);
+
+      if (response.ok) {
+        console.log("Signup successful:", data);
+        onSignupClick();
+        navigate("/verification");
+      } else {
+        setError(data.message || "Signup failed");
+      }
+    } catch (err) {
+      setLoading(false);
+      setError("Server error, please try again.");
+      console.error("Signup error:", err);
     }
   };
 
@@ -85,7 +103,9 @@ function Signup({ onSignupClick }) {
             Agree to the terms & policy
           </label>
           {error && <div className="error-message">{error}</div>}
-          <button type="submit" className="signup-button">Signup</button>
+          <button type="submit" className="signup-button" disabled={loading}>
+            {loading ? "Signing up..." : "Signup"}
+          </button>
         </form>
         <div className="social-signup">
           <button className="google-signup">
@@ -109,4 +129,3 @@ function Signup({ onSignupClick }) {
 }
 
 export default Signup;
-
