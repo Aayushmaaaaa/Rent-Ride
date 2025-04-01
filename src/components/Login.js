@@ -1,24 +1,54 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import './Login.css';
-import googleLogo from '../assets/google.png';
-
-import appleLogo from '../assets/apple-logo.png';
-import driftyLogo from '../assets/drifty-logo.png';
-import audiCar from '../assets/audi-car.png'; // Import car image
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./Login.css";
+import googleLogo from "../assets/google.png";
+import appleLogo from "../assets/apple-logo.png";
+import driftyLogo from "../assets/drifty-logo.png";
+import audiCar from "../assets/audi-car.png";
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Login submitted:', { email, password });
-    // Add your login logic here (or simulate login)
-    // For now, let's just navigate back to signup as an example
+    setError("");
+    setLoading(true);
 
-    navigate("/"); // navigate to signup page
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to login");
+      }
+
+      // Store the token in localStorage
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      // Show success alert instead of redirecting
+      alert(`Login successful! Welcome back, ${data.user.name}!`);
+
+      // Optional: Clear the form
+      setEmail("");
+      setPassword("");
+    } catch (error) {
+      console.error("Login error:", error);
+      setError(error.message || "An error occurred during login");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -31,18 +61,21 @@ function Login() {
         </div>
         <h2>Welcome Back</h2>
         <p>Enter your credentials to access your account</p>
+        {error && <div className="error-message">{error}</div>}
         <form onSubmit={handleSubmit}>
           <input
             type="email"
             placeholder="Email address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
           <input
             type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
           <div className="login-options">
             <a href="/forgot-password" className="forgot-password">
@@ -52,8 +85,8 @@ function Login() {
               <input type="checkbox" /> Remember for 30 days
             </label>
           </div>
-          <button type="submit" className="login-button">
-            Login
+          <button type="submit" className="login-button" disabled={loading}>
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
         <div className="social-login">
