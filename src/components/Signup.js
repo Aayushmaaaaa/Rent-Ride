@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom'; // useNavigate is not used in this component anymore
 import './Signup.css';
 import googleLogo from '../assets/google.png';
 import appleLogo from '../assets/apple-logo.png';
 import audiCar from '../assets/audi-car.png';
 import driftyLogo from '../assets/drifty-logo.png';
+
 
 function Signup({ onSignupClick }) {
   const [name, setName] = useState('');
@@ -12,7 +13,6 @@ function Signup({ onSignupClick }) {
   const [password, setPassword] = useState('');
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [error, setError] = useState('');
-  const navigate = useNavigate();
 
   const validateForm = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -40,11 +40,9 @@ function Signup({ onSignupClick }) {
     e.preventDefault();
     if (validateForm()) {
       console.log('Signup submitted:', { name, email, password, agreeTerms });
-
-      // Simulate successful signup (remove the fetch call)
       console.log('Simulating successful signup...');
-      onSignupClick(); // Trigger signup completion and navigate to verification
-      navigate("/verification"); // Navigate directly to verification page
+      onSignupClick(); // Trigger state update in App.js
+      // Navigation to /verification will happen in App.js useEffect
     }
   };
 
@@ -87,6 +85,7 @@ function Signup({ onSignupClick }) {
           {error && <div className="error-message">{error}</div>}
           <button type="submit" className="signup-button">Signup</button>
         </form>
+        <div className="or-divider">or</div>
         <div className="social-signup">
           <button className="google-signup">
             <img src={googleLogo} alt="Google Logo" />
@@ -109,4 +108,3 @@ function Signup({ onSignupClick }) {
 }
 
 export default Signup;
-

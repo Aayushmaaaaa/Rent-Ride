@@ -1,3 +1,9 @@
+/* Signup.css */
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .signup-container {
   display: flex;
   height: 100vh;
@@ -6,10 +12,9 @@
 }
 
 .signup-form {
-  width: 350px; /* Adjusted width */
+  width: 350px;
   padding: 40px;
-  margin: auto 0;
-  margin-left: 50px;
+  margin: 80px auto 0 20px;
 }
 
 .signup-button {
@@ -26,13 +31,18 @@
 }
 
 .logo-container {
-  margin-bottom: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 10px;
+  z-index: 3;
 }
 
 .logo {
   display: flex;
-  align-items: center;
-  justify-content: left; /* Align logo to the left */
+  align-items: flex-start;
+  justify-content: left;
+  height: auto;
 }
 
 .logo img {
@@ -50,18 +60,24 @@ p {
   font-size: 0.9em;
   margin-bottom: 20px;
   color: #666;
-  text-align: left; /* Align paragraph text to the left */
+  text-align: left;
 }
 
 input[type="text"],
-input[type="email"], /* Added email type */
+input[type="email"],
 input[type="password"] {
   width: calc(100% - 22px);
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  font-size: 0.9em;
+  font-size: 0.85em;
+  font-family: sans-serif;
+}
+
+input::placeholder {
+  color: #999;
+  font-style: normal;
 }
 
 label {
@@ -69,7 +85,7 @@ label {
   align-items: center;
   margin-bottom: 20px;
   font-size: 0.9em;
-  text-align: left; /* Align label text to the left */
+  text-align: left;
 }
 
 label input[type="checkbox"] {
@@ -78,13 +94,13 @@ label input[type="checkbox"] {
 
 .social-signup {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   gap: 15px;
 }
 
 .google-signup,
 .apple-signup {
-  width: 100%;
+  width: 48%;
   padding: 10px;
   background-color: white;
   color: black;
@@ -109,9 +125,6 @@ label input[type="checkbox"] {
   margin: 15px 0;
   color: #999;
   font-size: 0.9em;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  padding: 10px 0;
 }
 
 .login-link {
@@ -149,5 +162,5 @@ label input[type="checkbox"] {
   color: red;
   font-size: 0.9em;
   margin-bottom: 15px;
-  text-align: left; /* Align error message to the left */
+  text-align: left;
 }
