@@ -1,283 +1,198 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 
-function App() {
+function LoginPage() {
   const [pickupDate, setPickupDate] = useState("");
-  const [returnDate, setReturnDate] = useState(""); 
+  const [returnDate, setReturnDate] = useState("");
+  const [filterType, setFilterType] = useState("All");
+
   const featuredVehicles = [
     {
       brand: "Mercedes",
-      features: ["H Automatic", "Conditioner"],
+      type: "Sedan",
+      price: 25,
+      gearType: "Automatic",
+      features: ["Air Conditioner"],
       image: "src/Images/no3.png",
     },
     {
       brand: "Mercedes",
-      features: ["H Automatic", "Conditioner"],
+      type: "Sport",
+      price: 50,
+      gearType: "Manual",
+      features: ["Air Conditioner"],
       image: "src/Images/no4.png",
     },
     {
       brand: "Mercedes",
-      features: ["H Automatic", "Conditioner"],
+      type: "Sport",
+      price: 50,
+      gearType: "Manual",
+      features: ["Air Conditioner"],
       image: "src/Images/no5.png",
     },
     {
-      brand: "Portable",
-      features: ["H Automatic", "Conditioner"],
+      brand: "Porsche",
+      type: "SUV",
+      price: 40,
+      gearType: "Automatic",
+      features: ["Air Conditioner"],
       image: "src/Images/no6.png",
     },
     {
       brand: "Toyota",
-      features: ["H Automatic", "Conditioner"],
+      type: "Sedan",
+      price: 35,
+      gearType: "Manual",
+      features: ["Air Conditioner"],
       image: "src/Images/no7.png",
     },
     {
-      brand: "Portable",
-      features: ["H Automatic", "Conditioner"],
+      brand: "Porsche",
+      type: "SUV",
+      price: 50,
+      gearType: "Automatic",
+      features: ["Air Conditioner"],
       image: "src/Images/no8.png",
     },
     {
       brand: "Mercedes",
-      features: ["H Automatic", "Conditioner"],
+      type: "Van",
+      price: 50,
+      gearType: "Automatic",
+      features: ["Air Conditioner"],
       image: "src/Images/no9.png",
     },
     {
-      brand: "Mercedes",
-      features: ["H Automatic", "Conditioner"],
+      brand: "Toyota",
+      type: "Sport",
+      price: 60,
+      gearType: "Manual",
+      features: ["Air Conditioner"],
       image: "src/Images/no10.png",
     },
   ];
 
+  const renderVehicleGrid = () => {
+    const filteredVehicles =
+      filterType === "All"
+        ? featuredVehicles
+        : featuredVehicles.filter(
+            (vehicle) => vehicle.type.toLowerCase() === filterType.toLowerCase()
+          );
+
+    return (
+      <div className="vehicle-cards">
+        {filteredVehicles.map((vehicle, index) => (
+          <div key={index} className="vehicle-card">
+            <img
+              src={vehicle.image}
+              alt={vehicle.brand}
+              className="vehicle-img"
+            />
+            <h3>{vehicle.brand}</h3>
+            <p>${vehicle.price} per day</p>
+            <p>
+              {vehicle.type} | {vehicle.gearType}
+            </p>
+            <p>{vehicle.features.join(" | ")}</p>
+            <button className="details-button">View Details</button>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   return (
-    <div className="app-container">
-      <nav className="navbar">
-        <img src="src/Images/Logo.png" alt="Logo" className="logo" />
-        <div className="nav-links">
-          <a href="#">Home</a>
-          <a href="#">Vehicles</a>
-          <a href="#">Details</a>
-          <a href="#">About Us</a>
-          <a href="#">Contact Us</a>
-          <button className="signup-btn">Sign Up</button>
+    <div className="home-container">
+      {/* NAVBAR SECTION */}
+      <div className="navbar">
+        <div className="navbar-left">
+          <img src="src/Images/Logo.png" alt="Drifty Logo" className="logo" />
         </div>
-      </nav>
-
-      <div className="hero">
-        <div className="hero-vehicle-container">
+        <div className="navbar-center">
+          <a href="#home">Home</a>
+          <a href="#vehicles">Vehicles</a>
+          <a href="#details">Details</a>
+          <a href="#about">About Us</a>
+          <a href="#contact">Contact Us</a>
+        </div>
+        <div className="navbar-right">
           <img
-            src="src/Images/no1.png"
-            alt="Premium Car"
-            className="vehicle-image"
+            src="src/Images/user.png"
+            alt="User Profile"
+            className="user-avatar"
           />
         </div>
-
-        <div className="route-map-wrapper">
-          <img
-            src="src/Images/Middlemap.png"
-            alt="Route Map"
-            className="route-map-image"
-          />
-        </div>
-
+      </div>
+      {/* HERO SECTION */}
+      <div className="hero-section">
+        <img className="hero-car" src="src/Images/no1.png" alt="Car" />
         <div className="hero-content">
-          <h1>Rent a Car Anytime</h1>
-          <h2>Anywhere in Kathmandu</h2>
+          <h1>
+            Rent a Car Anytime <br /> Anywhere in Kathmandu
+          </h1>
           <p>
-            We provide the best car rental experience with affordable pricing.
+            Lorem ipsum dolor sit amet consectetur. Leo aliquam donec elit
+            dictum enim sed. Lorem ipsum dolor sit amet consectetur. Leo aliquam
+            donec elit dictum enim sed.
           </p>
           <div className="hero-buttons">
-            <button className="book-btn">Book Now</button>
-            <button className="video-btn">Watch Video</button>
+            <button className="book-button">Book Now</button>
+            <button className="video-button">Watch Video</button>
           </div>
         </div>
       </div>
 
-      <div className="benefits-container">
-        <h2 className="benefits-title">Why Choose Us</h2>
-        <div className="benefits-content">
-          <ul className="benefits-list">
-            <li className="benefit-item">
-              <div className="benefit-content">
-                <h3 className="benefit-heading">Best Price Guaranteed</h3>
-                <p className="benefit-description">
-                  Find a lower price? We'll refund you 100% of the difference.
-                </p>
-              </div>
-            </li>
-
-            <li className="benefit-item">
-              <div className="benefit-content">
-                <h3 className="benefit-heading">Experience Driver</h3>
-                <p className="benefit-description">
-                  Don't have driver? Don't worry, we have many experienced
-                  driver for you.
-                </p>
-              </div>
-            </li>
-
-            <li className="benefit-item">
-              <div className="benefit-content">
-                <h3 className="benefit-heading">24 Hour Car Delivery</h3>
-                <p className="benefit-description">
-                  Book your car anytime and we will deliver it directly to you.
-                </p>
-              </div>
-            </li>
-
-            <li className="benefit-item">
-              <div className="benefit-content">
-                <h3 className="benefit-heading">24/7 Technical Support</h3>
-                <p className="benefit-description">
-                  Have a question? Contact Rentcars support any time when you
-                  have problem.
-                </p>
-              </div>
-            </li>
-          </ul>
-          <div className="feature-car-image">
-            <img src="src/Images/no2.png" alt="HEETOR BACISTON car" />
-          </div>
+      {/* ABOUT SECTION */}
+      <div className="about-section">
+        <div className="about-text">
+          <h2>
+            Ride Your <br /> Dream car With Drifty
+          </h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur. Purus sociis diam sit
+            adipiscing feugiat commodo est eget. Tortor nulla diam pellentesque
+            lorem fringilla pulvinar...
+          </p>
+        </div>
+        <div className="about-images">
+          <img src="src/Images/p11.png" alt="Car on road" />
+          <img src="src/Images/p12.png" alt="Yellow car" />
         </div>
       </div>
 
-      <div className="services">
-        <div className="service">
-          <div className="service-icon">🚗</div>
-          <h3>Availability</h3>
-          <p>Get a car or bike anytime with instant booking.</p>
-        </div>
-        <div className="service">
-          <div className="service-icon">🛋️</div>
-          <h3>Comfort</h3>
-          <p>Enjoy smooth rides with our quality vehicles.</p>
-        </div>
-        <div className="service">
-          <div className="service-icon">💰</div>
-          <h3>Savings</h3>
-          <p>Best rental rates with no hidden fees.</p>
-        </div>
-      </div>
-
-      <section className="featured-vehicles">
-        <h2>Featured Vehicles</h2>
-        <div className="vehicle-grid">
-          {featuredVehicles.map((vehicle, index) => (
-            <div className="vehicle-card" key={index}>
-              <img src={vehicle.image} alt={`${vehicle.brand} vehicle`} />
-              <h3>{vehicle.brand}</h3>
-              <ul>
-                {vehicle.features.map((feature, i) => (
-                  <li key={i}>{feature}</li>
-                ))}
-              </ul>
-              <button>View Details</button>
-            </div>
+      {/* VEHICLE SECTION */}
+      <div className="vehicle-section">
+        <h2>Choose Your Ride</h2>
+        {/* Filter Buttons */}
+        <div className="vehicle-filters">
+          {[
+            { label: "All vehicles", type: "All" },
+            { label: "🚗 Sedan", type: "Sedan" },
+            { label: "🚘 Cabriolet", type: "Cabriolet" },
+            { label: "🛻 Pickup", type: "Pickup" },
+            { label: "🚙 SUV", type: "SUV" },
+            { label: "🚐 Minivan", type: "Van" },
+            { label: "🏎️ Sport", type: "Sport" },
+          ].map((filter) => (
+            <button
+              key={filter.type}
+              className={`filter-button ${
+                filterType === filter.type ? "active" : ""
+              }`}
+              onClick={() => setFilterType(filter.type)}
+            >
+              {filter.label}
+            </button>
           ))}
         </div>
-      </section>
 
-      <section className="stats-section">
-        <h2>30,000+</h2>
-        <div className="highlight">Bert retinge</div>
-      </section>
-
-      <section className="about-section">
-        <div className="about-content">
-          <h3>BIT ABOUT US</h3>
-          <div className="highlight">Bert retinge</div>
-          <p>
-            Lorem ipsum dolor sit amet consectetur. Nulla netus semper ornare
-            elit egestas facilisis felis. Sodales risus tortor crangitis
-            rhoncus. Elementum volutpat magnis sit duis aenean orci ornari
-            lobortis.
-          </p>
-          <div className="divider"></div>
-          <button className="explore-button">EXPLORE MORE</button>
-        </div>
-      </section>
-
-      <section className="testimonials-section">
-        <h2>What Our Customers Say About Us</h2>
-        <div className="testimonial-grid">
-          <div className="testimonial-card">
-            <p>
-              Lorem ipsum dolor sit amet consectetur. Libero neque eu quis magna
-              tempor. Turpis sed rhoncus tortor luctus pretium fermentum in.
-              Varius aliquam amet sagittis sed cras commodo vitae eget dul.
-              Neque diam pharetra risus diam amet dolor tellus ultrices
-              pellentesque scelerisque.
-            </p>
-            <div className="testimonial-author">
-              <strong>Pravesh Taming</strong>
-              <br></br> <span>Lalitpur</span>
-            </div>
-          </div>
-          <div className="testimonial-card">
-            <p>
-              Lorem ipsum dolor sit amet consectetur. Libero neque eu quis magna
-              tempor. Turpis sed rhoncus tortor luctus pretium fermentum in.
-              Varius aliquam amet sagittis sed cras commodo vitae eget dul.
-              Neque diam pharetra risus diam amet dolor tellus ultrices
-              pellentesque scelerisque.
-            </p>
-            <div className="testimonial-author">
-              <strong>Pravesh Taming</strong>
-              <br></br> <span>Lalitpur</span>
-            </div>
-          </div>
-          <div className="testimonial-card">
-            <p>
-              Lorem ipsum dolor sit amet consectetur. Libero neque eu quis magna
-              tempor. Turpis sed rhoncus tortor luctus pretium fermentum in.
-              Varius aliquam amet sagittis sed cras commodo vitae eget dul.
-              Neque diam pharetra risus diam amet dolor tellus ultrices
-              pellentesque scelerisque.
-            </p>
-            <div className="testimonial-author">
-              <strong>Pravesh Taming</strong>
-              <br></br> <span>Lalitpur</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <footer className="footer">
-        <div className="footer-columns">
-          <div className="footer-section">
-            <h4>COMPANY</h4>
-            <ul>
-              <li>About Us</li>
-              <li>Careers</li>
-              <li>Press</li>
-            </ul>
-          </div>
-          <div className="footer-section">
-            <h4>VEHICLES</h4>
-            <ul>
-              <li>Economy</li>
-              <li>SUVs</li>
-              <li>Luxury</li>
-            </ul>
-          </div>
-          <div className="footer-section">
-            <h4>SUPPORT</h4>
-            <ul>
-              <li>Contact Us</li>
-              <li>FAQs</li>
-            </ul>
-          </div>
-          <div className="footer-section">
-            <h4>LOCATIONS</h4>
-            <ul>
-              <li>New York</li>
-              <li>Los Angeles</li>
-              <li>Chicago</li>
-            </ul>
-          </div>
-        </div>
-        <p className="copyright">© 2025 Drifty. All rights reserved.</p>
-      </footer>
+        {/* Vehicle Grid */}
+        {renderVehicleGrid()}
+      </div>
     </div>
   );
 }
 
-export default App;
+export default LoginPage;
