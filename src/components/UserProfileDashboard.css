@@ -1,0 +1,287 @@
+/* src/components/UserProfileDashboard/UserProfileDashboard.css */
+.user-profile-dashboard-container {
+  font-family: sans-serif;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.left-icons {
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.left-icon {
+  font-size: 20px;
+  color: #555;
+  cursor: pointer;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.welcome-date h2 {
+  margin-bottom: 3px;
+  font-size: 22px;
+  color: #333;
+}
+
+.welcome-date .date {
+  color: #777;
+  font-size: 12px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.search-bar {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  padding: 3px 10px;
+}
+
+.search-bar input[type="text"] {
+  border: none;
+  padding: 6px 8px;
+  font-size: 13px;
+  width: 150px;
+  outline: none;
+}
+
+.search-bar .search-icon {
+  color: #555;
+  margin-left: 5px;
+  font-size: 14px;
+}
+
+.notification-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #555;
+  padding: 6px;
+  border-radius: 50%;
+}
+
+
+.user-avatar { /* For the top right */
+  width: 45px; /* Adjusted width */
+  height: 45px; /* Adjusted height */
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #ddd; /* Optional border */
+}
+
+.user-avatar img { /* For the top right image */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner {
+  background-color: #f0f0f0;
+  height: 100px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.dark-banner {
+  background-color: #444;
+}
+
+.profile-info-section {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  border: 1px solid #eee;
+}
+
+.avatar-container {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 15px;
+  border: 1px solid #ddd;
+}
+
+.avatar-container img { /* For the image within the .avatar-container */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-name-email .name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 3px;
+}
+
+.user-name-email .email {
+  color: #777;
+  font-size: 12px;
+}
+
+.edit-button {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  border: 1px solid #eee;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.form-group input[type="text"],
+.form-group .select-wrapper select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+}
+
+.form-group .select-wrapper {
+  position: relative;
+}
+
+.form-group .select-wrapper select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 30px;
+}
+
+.form-group .select-wrapper::after {
+  content: '\25BC';
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #777;
+  pointer-events: none;
+}
+
+.form-group.kyc {
+  grid-column: 1 / span 2;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.save-continue-button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: auto;
+}
+
+/* Style for the Email Address within the grid */
+.form-group.email-address-grid-item {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff; /* Ensure white background */
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #eee;
+}
+
+.form-group.email-address-grid-item h3 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.form-group.email-address-grid-item .email-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.form-group.email-address-grid-item .email-item:last-child {
+  border-bottom: none;
+}
+
+.form-group.email-address-grid-item .email-icon {
+  font-size: 18px;
+  color: #555;
+  margin-right: 10px;
+}
+
+.form-group.email-address-grid-item .email-details {
+  flex-grow: 1;
+}
+
+.form-group.email-address-grid-item .email-text {
+  font-size: 14px;
+  color: #333;
+}
+
+.form-group.email-address-grid-item .email-ago {
+  font-size: 11px;
+  color: #777;
+}
+
+.form-group.email-address-grid-item .add-email-button {
+  background: none;
+  color: #007bff;
+  border: none;
+  padding: 8px 0;
+  cursor: pointer;
+  font-size: 12px;
+  margin-top: 10px;
+}
