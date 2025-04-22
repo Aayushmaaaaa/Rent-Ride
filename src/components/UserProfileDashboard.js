@@ -1,22 +1,30 @@
  // src/components/UserProfileDashboard/UserProfileDashboard.js
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './UserProfileDashboard.css';
 import profileImage from '../assets/default_profile.png';
-import searchIcon from '../assets/search-icon.png'; // Placeholder - replace with your actual icon import
-import notificationIcon from '../assets/notification-icon.png'; // Placeholder - replace with your actual icon import
-import emailIcon from '../assets/email-icon.png'; // Placeholder - replace with your actual icon import
+import searchIcon from '../assets/search-icon.png'; // Replace with your actual icon
+import notificationIcon from '../assets/notification-icon.png'; // Replace with your actual icon
 
 function UserProfileDashboard() {
+  const navigate = useNavigate();
+  const currentDate = new Date().toLocaleDateString('en-US', {
+    weekday: 'short',
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric'
+  });
+
   return (
     <div className="user-profile-dashboard-container full-screen">
       <div className="left-icons">
-        <div className="left-icon">☰</div> {/* Placeholder for icon */}
-        <div className="left-icon">⚙</div> {/* Placeholder for icon */}
+        <div className="left-icon active">☰</div>
+        <div className="left-icon" onClick={() => navigate('/rides')}>⚙</div>
       </div>
       <div className="header">
         <div className="welcome-date">
           <h2>Welcome, User</h2>
-          <p className="date">Tue, 07 June 2022</p>
+          <p className="date">{currentDate}</p>
         </div>
         <div className="header-right">
           <div className="search-bar">
@@ -32,6 +40,7 @@ function UserProfileDashboard() {
         </div>
       </div>
 
+      {/* Rest of your existing user profile dashboard code remains the same */}
       <div className="banner dark-banner">
         {/* Darker banner */}
       </div>
@@ -67,7 +76,6 @@ function UserProfileDashboard() {
               <option value="female">Female</option>
               <option value="other">Other</option>
             </select>
-            {/* Dropdown arrow */}
           </div>
         </div>
         <div className="form-group kyc">
@@ -84,7 +92,6 @@ function UserProfileDashboard() {
               <option value="spanish">Spanish</option>
               {/* Add more languages */}
             </select>
-            {/* Dropdown arrow */}
           </div>
         </div>
         <div className="form-group email-address-grid-item">
