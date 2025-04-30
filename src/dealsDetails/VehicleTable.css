@@ -1,0 +1,79 @@
+.table-container {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+.vehicle-table {
+  min-width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table-header {
+  background-color: #f3f4f6;
+}
+
+.table-header th {
+  padding: 0.75rem 1.5rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #4b5563;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.table-body tr {
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.table-body tr:hover {
+  background-color: #f9fafb;
+}
+
+.table-cell {
+  padding: 1rem 1.5rem;
+  white-space: nowrap;
+}
+
+.car-photo {
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.car-emoji {
+  color: #6b7280;
+  font-size: 0.75rem;
+}
+
+.cell-content {
+  font-size: 0.875rem;
+  color: #111827;
+}
+
+.delete-button {
+  color: #dc2626;
+}
+
+.delete-button:hover {
+  color: #991b1b;
+}
+
+.actions-cell {
+  text-align: right;
+  font-weight: 500;
+}

@@ -1,0 +1,237 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 50;
+  overflow-y: auto;
+}
+
+.modal-container {
+  background-color: white;
+  border-radius: 0.5rem;
+  width: 95%;
+  max-width: 32rem;
+  position: relative;
+  margin: auto;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Adjust modal padding for mobile */
+@media (max-width: 640px) {
+  .modal-container {
+    width: 100%;
+    margin: 0.5rem;
+    max-height: 95vh;
+  }
+
+  .form-container {
+    padding: 1rem;
+  }
+}
+
+/* Make photo preview responsive */
+.photo-preview {
+  background-color: #F3F4F6;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: min(40vh, 15rem);
+  width: 100%;
+}
+
+.preview-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Adjust form layout for better spacing */
+.form-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+/* Responsive buttons */
+.form-actions {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 480px) {
+  .form-actions {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-fields {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Keep existing styles */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 50;
+}
+
+.modal-container {
+  background-color: white;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 28rem;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  color: #6B7280;
+}
+
+.close-button:hover {
+  color: #374151;
+}
+
+.form-container {
+  padding: 1.5rem;
+}
+
+.photo-section {
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.photo-preview {
+  background-color: #F3F4F6;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10rem;
+}
+
+.photo-placeholder {
+  color: #9CA3AF;
+}
+
+.upload-placeholder {
+  width: 4rem;
+  height: 4rem;
+  border: 2px dashed #D1D5DB;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-button {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid #D1D5DB;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+}
+
+.upload-button:hover {
+  background-color: #F9FAFB;
+}
+
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.25rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #D1D5DB;
+  border-radius: 0.375rem;
+}
+
+.form-input:focus {
+  outline: none;
+  ring: 1px;
+  ring-color: #9CA3AF;
+}
+
+.form-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.cancel-button {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border: 1px solid #D1D5DB;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+}
+
+.cancel-button:hover {
+  background-color: #F9FAFB;
+}
+
+.submit-button {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  background-color: #111827;
+  color: white;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+}
+
+.submit-button:hover {
+  background-color: #1F2937;
+}
+
+/* Add scrollbar styling */
+.modal-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.modal-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.modal-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
