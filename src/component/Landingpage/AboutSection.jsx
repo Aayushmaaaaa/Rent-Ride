@@ -1,6 +1,6 @@
 import React from "react";
-import carBlack from "./Images/p11.png";
-import carYellow from "./Images/p12.png";
+import carBlack from "../Images/p11.png";
+import carYellow from "../Images/p12.png";
 
 
 const AboutSection = () => {

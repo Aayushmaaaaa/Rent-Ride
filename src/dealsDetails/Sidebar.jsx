@@ -1,6 +1,7 @@
 import React from 'react';
 import { Car, Mail, BookOpen, CarFront, Tag as PriceTag, Calendar, CheckSquare, UserRound, Receipt, Palette, Users, Table2, Settings, LogOut, X } from 'lucide-react';
 import './Sidebar.css';
+import logo from '../component/Images/Logo.png'; // Fixed import syntax
 
 const MenuItem = ({ icon, text, active }) => {
   return (
@@ -17,7 +18,7 @@ const Sidebar = ({ isOpen = true, onClose }) => {
   return (
     <div className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className="sidebar-header">
-        <h1 className="sidebar-title">drifty</h1>
+        <img src={logo} alt="Logo" className="sidebar-logo" /> {/* Fixed logo usage */}
         <button onClick={onClose} className="close-button">
           <X size={24} />
         </button>

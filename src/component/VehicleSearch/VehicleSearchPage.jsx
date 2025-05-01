@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./VehicleSearchPage.css";
 
-import no3 from "./Images/no3.png";
-import no4 from "./Images/no4.png";
-import no5 from "./Images/no5.png";
-import no6 from "./Images/no6.png";
-import no7 from "./Images/no7.png";
-import no8 from "./Images/no8.png";
-import no9 from "./Images/no9.png";
-import no10 from "./Images/no10.png";
-import p12 from "./Images/p12.png";
+import no3 from "../Images/no3.png";
+import no4 from "../Images/no4.png";
+import no5 from "../Images/no5.png";
+import no6 from "../Images/no6.png";
+import no7 from "../Images/no7.png";
+import no8 from "../Images/no8.png";
+import no9 from "../Images/no9.png";
+import no10 from "../Images/no10.png";
+import p12 from "../Images/p12.png";
 
 // Vehicle data
 const vehicleData = {

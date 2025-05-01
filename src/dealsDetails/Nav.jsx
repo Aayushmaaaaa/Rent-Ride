@@ -1,8 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Bell, Search, Globe, Menu } from 'lucide-react';
 import './Nav.css';
 
 const Nav = ({ onMenuClick }) => {
+  const [showNotifications, setShowNotifications] = useState(false);
+  const notificationRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (notificationRef.current && !notificationRef.current.contains(event.target)) {
+        setShowNotifications(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   return (
     <div className="nav-container">
       <div className="nav-wrapper">
@@ -23,9 +37,30 @@ const Nav = ({ onMenuClick }) => {
         </div>
 
         <div className="nav-right">
-          <div className="notification-badge">
-            <Bell size={20} className="notification-icon" />
-            <span className="badge">2</span>
+          <div className="notification-container" ref={notificationRef}>
+            <div 
+              className="notification-badge"
+              onClick={() => setShowNotifications(!showNotifications)}
+            >
+              <Bell size={20} className="notification-icon" />
+              <span className="badge">2</span>
+            </div>
+            
+            {showNotifications && (
+              <div className="notification-popup">
+                <h3>Notifications</h3>
+                <div className="notification-list">
+                  <div className="notification-item">
+                    <p>New booking request received</p>
+                    <span>2 minutes ago</span>
+                  </div>
+                  <div className="notification-item">
+                    <p>Vehicle maintenance due</p>
+                    <span>1 hour ago</span>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="location">

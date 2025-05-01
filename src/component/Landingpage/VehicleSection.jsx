@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import VehicleCard from "./VehicleCard";
 
-import no3 from "./Images/no3.png";
-import no4 from "./Images/no4.png";
-import no5 from "./Images/no5.png";
-import no6 from "./Images/no6.png";
+import no3 from "../Images/no3.png";
+import no4 from "../Images/no4.png";
+import no5 from "../Images/no5.png";
+import no6 from "../Images/no6.png";
 
 const VehicleSection = () => {
   const categories = ["All vehicles", "Sedan", "Sport", "SUV"];

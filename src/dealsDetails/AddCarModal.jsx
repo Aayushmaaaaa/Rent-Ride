@@ -5,13 +5,19 @@ import './AddCarModal.css';
 const AddCarModal = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
     carName: '',
+    carNumber: '',
     carType: '',
+    phoneNumber: '',
     seats: '',
+    bookingType: '',
     gearType: '',
     airCondition: '',
-    ratePerDay: '',
     photos: null
   });
+
+  const carTypes = ['Sedan', 'SUV', 'Mini Van', 'Mini Van (EV)'];
+  const gearTypes = ['Manual', 'Automatic'];
+  const acOptions = ['Yes', 'No'];
 
   if (!isOpen) return null;
 
@@ -30,45 +36,57 @@ const AddCarModal = ({ isOpen, onClose }) => {
         
         <form onSubmit={handleSubmit} className="form-container">
           <div className="photo-section">
-            <h3 className="section-title">Car photos</h3>
-            <div className="photo-preview">
-              {formData.photos ? (
-                <img 
-                  src={URL.createObjectURL(formData.photos)} 
-                  alt="Preview" 
-                  className="preview-image"
-                />
-              ) : (
-                <div className="photo-placeholder">
-                  <div className="upload-placeholder">
-                    <span>+</span>
-                  </div>
+            <h3>Car photos</h3>
+            <div className="photo-upload-area">
+              <div className="photo-placeholder">
+                <div className="upload-icon">
+                  <img src="/path-to-upload-icon.svg" alt="Upload" />
                 </div>
-              )}
+              </div>
+              <button type="button" className="upload-photos-btn">
+                Upload Photos
+              </button>
             </div>
-            <button type="button" className="upload-button">
-              Upload Photos
-            </button>
           </div>
 
-          <div className="form-fields">
+          <div className="form-grid">
             <div className="form-group">
               <label>Car Name</label>
               <input
                 type="text"
-                className="form-input"
                 value={formData.carName}
                 onChange={(e) => setFormData({...formData, carName: e.target.value})}
               />
             </div>
 
             <div className="form-group">
-              <label>Car Type</label>
+              <label>Car Number</label>
               <input
                 type="text"
-                className="form-input"
+                value={formData.carNumber}
+                onChange={(e) => setFormData({...formData, carNumber: e.target.value})}
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Car Type</label>
+              <select
                 value={formData.carType}
                 onChange={(e) => setFormData({...formData, carType: e.target.value})}
+              >
+                <option value="">Select Type</option>
+                {carTypes.map(type => (
+                  <option key={type} value={type}>{type}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label>Phone Number</label>
+              <input
+                type="tel"
+                value={formData.phoneNumber}
+                onChange={(e) => setFormData({...formData, phoneNumber: e.target.value})}
               />
             </div>
 
@@ -76,48 +94,52 @@ const AddCarModal = ({ isOpen, onClose }) => {
               <label>Seats</label>
               <input
                 type="number"
-                className="form-input"
                 value={formData.seats}
                 onChange={(e) => setFormData({...formData, seats: e.target.value})}
               />
             </div>
 
             <div className="form-group">
-              <label>Gears Type</label>
+              <label>Booking Type</label>
               <input
                 type="text"
-                className="form-input"
+                value={formData.bookingType}
+                onChange={(e) => setFormData({...formData, bookingType: e.target.value})}
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Gears Type</label>
+              <select
                 value={formData.gearType}
                 onChange={(e) => setFormData({...formData, gearType: e.target.value})}
-              />
+              >
+                <option value="">Select Type</option>
+                {gearTypes.map(type => (
+                  <option key={type} value={type}>{type}</option>
+                ))}
+              </select>
             </div>
 
             <div className="form-group">
               <label>Air Condition</label>
-              <input
-                type="text"
-                className="form-input"
+              <select
                 value={formData.airCondition}
                 onChange={(e) => setFormData({...formData, airCondition: e.target.value})}
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Rate/Day</label>
-              <input
-                type="text"
-                className="form-input"
-                value={formData.ratePerDay}
-                onChange={(e) => setFormData({...formData, ratePerDay: e.target.value})}
-              />
+              >
+                <option value="">Select Option</option>
+                {acOptions.map(option => (
+                  <option key={option} value={option}>{option}</option>
+                ))}
+              </select>
             </div>
           </div>
 
           <div className="form-actions">
-            <button type="button" onClick={onClose} className="cancel-button">
+            <button type="button" onClick={onClose} className="cancel-btn">
               Cancel
             </button>
-            <button type="submit" className="submit-button">
+            <button type="submit" className="add-car-btn">
               Add Car
             </button>
           </div>

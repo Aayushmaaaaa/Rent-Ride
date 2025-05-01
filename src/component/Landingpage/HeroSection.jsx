@@ -1,6 +1,6 @@
 import React from "react";
-import carImage from "./Images/no1.png";
-import locationPath from "./Images/Middlemap.png";
+import carImage from "../Images/no1.png";
+import locationPath from "../Images/Middlemap.png";
 
 function HeroSection() {
   return (

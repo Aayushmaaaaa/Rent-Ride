@@ -1,0 +1,117 @@
+.booking-container {
+  display: flex;
+  padding: 2rem;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: sans-serif;
+}
+
+.left-section {
+  flex: 1;
+  padding: 2rem;
+}
+
+.drifty-logo {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.payment-section, .terms-section {
+  margin-bottom: 2rem;
+}
+
+.subtitle, .terms-text {
+  color: #666;
+  line-height: 1.6;
+}
+
+.payment-illustration {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.payment-illustration img {
+  max-width: 100%;
+  height: auto;
+}
+
+.right-section {
+  flex: 1;
+  background-color: #f8f8f8;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0;
+}
+
+.step {
+  position: relative;
+  padding: 0.5rem 1rem;
+}
+
+.step.active {
+  color: #000;
+  font-weight: bold;
+}
+
+.step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: -50%;
+  top: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: #ddd;
+}
+
+.order-details {
+  margin: 2rem 0;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.qr-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.qr-section img {
+  max-width: 200px;
+  margin-bottom: 1rem;
+}
+
+.confirm-button {
+  background-color: #000;
+  color: white;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.total-amount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+}
+
+.amount {
+  font-size: 1.2rem;
+  font-weight: bold;
+}

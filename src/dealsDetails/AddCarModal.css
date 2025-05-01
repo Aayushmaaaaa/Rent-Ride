@@ -7,30 +7,144 @@
   justify-content: center;
   padding: 1rem;
   z-index: 50;
-  overflow-y: auto;
+  overflow: auto;
 }
 
 .modal-container {
-  background-color: white;
-  border-radius: 0.5rem;
-  width: 95%;
-  max-width: 32rem;
+  margin-top: 10rem;
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 800px;
   position: relative;
-  margin: auto;
-  max-height: 90vh;
-  overflow-y: auto;
+  padding-top: 0rem;
 }
 
-/* Adjust modal padding for mobile */
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Photo upload section */
+.photo-section {
+  margin-bottom: 2rem;
+}
+
+.photo-upload-area {
+  border: 2px dashed #ddd;
+  background: #f8f8f8;
+  padding: 2rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 300px;
+}
+
+.upload-icon {
+  width: 60px;
+  height: 60px;
+  opacity: 0.5;
+}
+
+.upload-photos-btn {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Form fields */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: #4B5563;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #E5E7EB;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #111827;
+}
+
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236B7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+}
+
+/* Buttons */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.cancel-btn {
+  padding: 8px 16px;
+  border: 1px solid #E5E7EB;
+  background: white;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #4B5563;
+  cursor: pointer;
+}
+
+.add-car-btn {
+  padding: 8px 16px;
+  background: #111827;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Responsive adjustments */
 @media (max-width: 640px) {
   .modal-container {
-    width: 100%;
-    margin: 0.5rem;
-    max-height: 95vh;
+    padding: 1rem;
   }
 
-  .form-container {
-    padding: 1rem;
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-upload-area {
+    width: 100%;
   }
 }
 

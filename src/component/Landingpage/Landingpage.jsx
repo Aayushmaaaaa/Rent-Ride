@@ -1,5 +1,19 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./LandingPage.css";
+
+// Import all images
+import Logo from "../Images/Logo.png";
+import Car1 from "../Images/no1.png";
+import Car2 from "../Images/no2.png";
+import Car3 from "../Images/no3.png";
+import Car4 from "../Images/no4.png";
+import Car5 from "../Images/no5.png";
+import Car6 from "../Images/no6.png";
+import Car7 from "../Images/no7.png";
+import Car8 from "../Images/no8.png";
+import Car9 from "../Images/no9.png";
+import Car10 from "../Images/no10.png";
+import RouteMap from "../Images/Middlemap.png";
 
 function LandingPage() {
   const [pickupDate, setPickupDate] = useState("");
@@ -8,49 +22,49 @@ function LandingPage() {
     {
       brand: "Mercedes",
       features: ["H Automatic", "Conditioner"],
-      image: "src/Images/no3.png",
+      image: Car3,
     },
     {
       brand: "Mercedes",
       features: ["H Automatic", "Conditioner"],
-      image: "src/Images/no4.png",
+      image: Car4,
     },
     {
       brand: "Mercedes",
       features: ["H Automatic", "Conditioner"],
-      image: "src/Images/no5.png",
+      image: Car5,
     },
     {
       brand: "Portable",
       features: ["H Automatic", "Conditioner"],
-      image: "src/Images/no6.png",
+      image: Car6,
     },
     {
       brand: "Toyota",
       features: ["H Automatic", "Conditioner"],
-      image: "src/Images/no7.png",
+      image: Car7,
     },
     {
       brand: "Portable",
       features: ["H Automatic", "Conditioner"],
-      image: "src/Images/no8.png",
+      image: Car8,
     },
     {
       brand: "Mercedes",
       features: ["H Automatic", "Conditioner"],
-      image: "src/Images/no9.png",
+      image: Car9,
     },
     {
       brand: "Mercedes",
       features: ["H Automatic", "Conditioner"],
-      image: "src/Images/no10.png",
+      image: Car10,
     },
   ];
 
   return (
     <div className="app-container">
       <nav className="navbar">
-        <img src="src/Images/Logo.png" alt="Logo" className="logo" />
+        <img src={Logo} alt="Logo" className="logo" />
         <div className="nav-links">
           <a href="#">Home</a>
           <a href="#">Vehicles</a>
@@ -64,7 +78,7 @@ function LandingPage() {
       <div className="hero">
         <div className="hero-vehicle-container">
           <img
-            src="src/Images/no1.png"
+            src={Car1}
             alt="Premium Car"
             className="vehicle-image"
           />
@@ -72,7 +86,7 @@ function LandingPage() {
 
         <div className="route-map-wrapper">
           <img
-            src="src/Images/Middlemap.png"
+            src={RouteMap}
             alt="Route Map"
             className="route-map-image"
           />
@@ -134,7 +148,7 @@ function LandingPage() {
             </li>
           </ul>
           <div className="feature-car-image">
-            <img src="src/Images/no2.png" alt="HEETOR BACISTON car" />
+            <img src={Car2} alt="HEETOR BACISTON car" />
           </div>
         </div>
       </div>
