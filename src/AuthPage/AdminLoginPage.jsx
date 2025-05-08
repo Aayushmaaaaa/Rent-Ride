@@ -23,8 +23,8 @@ const AdminLoginPage = () => {
     // In a real application, you would authenticate against a backend.
     if (username === "admin" && password === "123456") {
       console.log("Admin logged in successfully!");
-      // Redirect to the admin dashboard route (you'll need to define this route)
-      navigate("/admin/dashboard");
+      // Redirect to the MainContent route
+      navigate("/dealsdetails"); // Assuming "/dealsdetails" is the correct route
     } else {
       setError("Invalid username or password.");
     }

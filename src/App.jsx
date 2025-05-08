@@ -7,12 +7,14 @@ import Booking from "./component/Booking/Booking";
 import DetailsPage from "./component/DetailsPage/DetailsPage";
 import TermsAndPolicies from "./component/TermsAndPoliciesPage/TermsAndPoliciesPage";
 // Import the new component
+import DriverVerification from "./dealsDetails/DriverVerification";
+import UserVerification from "./dealsDetails/UserVerification";
+import ProfileSettings from "./dealsDetails/ProfileSettings";
 import DriftyPage from './component/dashboard/DriftyPage';
-
 import RidesDashboard from './component/dashboard/RidesDashboard';
 import ListVehicleForm from "./component/List Your Vehicles/ListVehicleForm";
 import UserProfileDashboard from './component/dashboard/UserProfileDashboard';
-import AboutUsPage from "./component/AboutUs/AboutUsPage"; 
+import AboutUsPage from "./component/AboutUs/AboutUsPage";
 import LandingPage from "./component/Landingpage/Landingpage";
 import HomePage from "./component/Landingpage/HomePage";
 import AuthPage from "./AuthPage/AuthPage";
@@ -62,13 +64,14 @@ function App() {
       <Route path="/booking/:id" element={<Booking />} /> {/* Your existing booking route */}
       {/* Add the new route for the Booking component after payment */}
       <Route path="/admin/dashboard" element={<div>Admin Dashboard Content</div>} />
-      <Route path="/terms-and-policies" element={<TermsAndPolicies />} /> 
+      <Route path="/terms-and-policies" element={<TermsAndPolicies />} />
       <Route path="/payment/:id/booking" element={<Booking />} />
       <Route path="/profile" element={<UserProfileDashboard />} />
       <Route path="/payment/:id" element={<PaymentPage />} />
       <Route path="/auth" element={<AuthPage />} />
       <Route path="/login/user" element={<LoginPage onLoginSuccess={handleLoginSuccess} />} />
-      <Route path="/login/admin" element={<LoginPage onLoginSuccess={handleLoginSuccess} />} />
+      {/* Corrected route for AdminLoginPage */}
+      <Route path="/login/admin" element={<AdminLoginPage />} />
       <Route path="/list-your-vehicles" element={<ListVehicleForm />} />
       <Route path="/signup" element={<SignUp onSignupSuccess={handleSignupSuccess} />} />
       <Route path="/verification" element={<VerificationPage onVerificationSuccess={handleVerificationSuccess} />} />
@@ -79,7 +82,13 @@ function App() {
       <Route path="/contact-us" element={<ContactUsPage />} />
       <Route path="/order-confirmed" element={<OrderConfirmation />} />
       <Route path="/details" element={<DetailsPage />} />
+      <Route path="/dealsdetails" element={<MainContent />} />
+      <Route path="driver-verification" element={<DriverVerification/>}/>
+      <Route path="user-verification" element={<UserVerification/>}/>
+      <Route path="profile-settings" element={<ProfileSettings/>} />
+      <Route path="/dealsdetails" element={<MainContent />} />
     </Routes>
+    
   );
 }
 

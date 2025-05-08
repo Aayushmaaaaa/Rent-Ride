@@ -296,9 +296,7 @@
 }
 
 .form-input:focus {
-  outline: none;
-  ring: 1px;
-  ring-color: #9CA3AF;
+  outline: 1px solid #9CA3AF; /* Or a different color like #007bff */
 }
 
 .form-actions {
