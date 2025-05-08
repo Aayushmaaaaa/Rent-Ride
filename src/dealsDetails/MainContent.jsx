@@ -1,4 +1,6 @@
+// src/dealsDetails/MainContent.jsx
 import React, { useState } from 'react';
+import { Link, Outlet } from 'react-router-dom';
 import VehicleTable from './VehicleTable';
 import AddCarModal from './AddCarModal';
 import Sidebar from './Sidebar';
@@ -17,7 +19,7 @@ const MainContent = () => {
         <div className="content-area">
           <div className="header">
             <h1 className="page-title">Deals Details</h1>
-            <button 
+            <button
               onClick={() => setIsModalOpen(true)}
               className="add-button"
             >
@@ -25,8 +27,17 @@ const MainContent = () => {
             </button>
           </div>
 
+          <div className="navigation-links">
+              <Link to="active-vehicles">Active Vehicles</Link>
+              <Link to="driver-verification">Driver Verification</Link>
+              <Link to="user-verification">User Verification</Link>
+              <Link to="payments">Payments</Link>
+          </div>
+          
+
           <VehicleTable />
           <AddCarModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+          <Outlet /> 
         </div>
       </div>
     </div>

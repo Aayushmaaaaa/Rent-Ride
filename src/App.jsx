@@ -1,20 +1,16 @@
 // src/App.js
 import React, { useState, useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import VehicleSearchPage from "./component/VehicleSearch/VehicleSearchPage";
 import CarDetailPage from "./component/cardetails/CarDetailPage";
-
 import Booking from "./component/Booking/Booking";
 import DetailsPage from "./component/DetailsPage/DetailsPage";
 import TermsAndPolicies from "./component/TermsAndPoliciesPage/TermsAndPoliciesPage";
 // Import the new component
-
-
 import MainContent from "./dealsDetails/MainContent";
 import DriverVerification from "./dealsDetails/DriverVerification";
 import UserVerification from "./dealsDetails/UserVerification";
 import ProfileSettings from "./dealsDetails/ProfileSettings";
-
 import VerificationDetails from "./dealsDetails/VerificationDetails";
 import DriftyPage from './component/dashboard/DriftyPage';
 import RidesDashboard from './component/dashboard/RidesDashboard';
@@ -33,19 +29,23 @@ import PaymentPage from "./component/Payment/PaymentPage"; // Import PaymentPage
 import OrderConfirmation from "./component/OrderConfirmation/OrderConfirmation";// Import OrderConfirmation
 import "./App.css";
 
+// Import the new components for the nested routes
+import ActiveVechilesTable from "./dealsDetails/ActiveVechilesTable.jsx"; // Corrected import
+import PaymnetListing from "./dealsDetails/PaymnetListing.jsx";        // Corrected import
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
-  const navigate = useNavigate();
+  //const navigate = useNavigate(); // Removed - Not used directly at the top level
 
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
-    navigate("/verification");
+    //navigate("/verification"); // Removed - Handled by useEffect
   };
 
   const handleSignupSuccess = () => {
     setIsLoggedIn(true);
-    navigate("/verification");
+    //navigate("/verification"); // Removed - Handled by useEffect
   };
 
   const handleVerificationSuccess = () => {
@@ -54,11 +54,10 @@ function App() {
 
   useEffect(() => {
     if (isVerified) {
-      navigate("/");
-      // Reset isVerified after navigating to the home page
+      //navigate("/");  // Removed -  Verification details now
       setIsVerified(false);
     }
-  }, [isVerified, navigate]);
+  }, [isVerified]);
 
   return (
     <Routes>
@@ -66,9 +65,7 @@ function App() {
       <Route path="/" element={<LandingPage isLoggedIn={isLoggedIn} />} />
       <Route path="/search" element={<VehicleSearchPage />} />
       <Route path="/cardetails/:id" element={<CarDetailPage isLoggedIn={isLoggedIn} />} />
-      
-      <Route path="/booking/:id" element={<Booking />} /> {/* Your existing booking route */}
-      {/* Add the new route for the Booking component after payment */}
+      <Route path="/booking/:id" element={<Booking />} />
       <Route path="/admin/dashboard" element={<div>Admin Dashboard Content</div>} />
       <Route path="/terms-and-policies" element={<TermsAndPolicies />} />
       <Route path="/payment/:id/booking" element={<Booking />} />
@@ -76,24 +73,33 @@ function App() {
       <Route path="/payment/:id" element={<PaymentPage />} />
       <Route path="/auth" element={<AuthPage />} />
       <Route path="/login/user" element={<LoginPage onLoginSuccess={handleLoginSuccess} />} />
-      {/* Corrected route for AdminLoginPage */}
       <Route path="/login/admin" element={<AdminLoginPage />} />
       <Route path="/list-your-vehicles" element={<ListVehicleForm />} />
       <Route path="/signup" element={<SignUp onSignupSuccess={handleSignupSuccess} />} />
       <Route path="/verification" element={<VerificationPage onVerificationSuccess={handleVerificationSuccess} />} />
-      {/* Add the route for the OrderConfirmation component */}
       <Route path="/rides" element={<RidesDashboard />} />
       <Route path="/drifty" element={<DriftyPage />} />
       <Route path="/about-us" element={<AboutUsPage />} />
       <Route path="/contact-us" element={<ContactUsPage />} />
       <Route path="/order-confirmed" element={<OrderConfirmation />} />
       <Route path="/details" element={<DetailsPage />} />
-      <Route path="/dealsdetails" element={<MainContent />} />
-      <Route path="/driver-verification" element={<DriverVerification />} />
-      <Route path="/user-verification" element={<UserVerification />} />
-      <Route path="/profile-settings" element={<ProfileSettings />} />
-      <Route path="/verification" element={<VerificationPage />} />
+
+      {/* Deals Details Routes (Nested) */}
+      <Route path="/dealsdetails/*" element={<DealsDetailsRoutes />} />
+
       <Route path="/verification-details" element={<VerificationDetails />} />
+    </Routes>
+  );
+}
+
+function DealsDetailsRoutes() {
+  return (
+    <Routes>
+      <Route index element={<MainContent />} />
+      <Route path="active-vehicles" element={<ActiveVechilesTable />} />
+      <Route path="driver-verification" element={<DriverVerification />} />
+      <Route path="user-verification" element={<UserVerification />} />
+      <Route path="payments" element={<PaymnetListing />} /> {/* Corrected component name */}
     </Routes>
   );
 }

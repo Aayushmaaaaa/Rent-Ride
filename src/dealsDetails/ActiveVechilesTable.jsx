@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Nav from './Nav';
 import Sidebar from './Sidebar';
-import './ActiveVehiclesTable.css';
+import './ActiveVechilesTable.css';
 
 const ActiveVehiclesTable = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
