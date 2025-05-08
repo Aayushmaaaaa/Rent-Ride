@@ -89,7 +89,7 @@ const UserVerification = () => {
         <Nav onMenuClick={() => setIsSidebarOpen(true)} />
         <div className="content-area">
           <div className="driver-verification">
-            <h1>User Verification</h1>
+            <h1>KYC Verification</h1>
 
             <div className="stats-container">
               <div className="stat-card total">

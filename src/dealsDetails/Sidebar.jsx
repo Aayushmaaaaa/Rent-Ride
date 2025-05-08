@@ -49,7 +49,7 @@ const Sidebar = ({ isOpen = true, onClose }) => {
           />
           <MenuItem 
             icon={<Car size={18} />} 
-            text="User Verification" 
+            text="KYC Verification" 
             to="/dealsdetails/user-verification"
             active={location.pathname === '/dealsdetails/user-verification'} 
           />
