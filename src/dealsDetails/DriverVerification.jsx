@@ -19,12 +19,12 @@ const DriverVerification = () => {
 
   const driverData = [
     { id: '#VH-1042', owner: 'Pravesh', vehicle: 'Toyota Camry (2022)', status: 'Pending' },
-    { id: '#VH-1041', owner: 'Taklu', vehicle: 'Honda Civic (2023)', status: 'Pending' },
+    { id: '#VH-1041', owner: 'Rajiv', vehicle: 'Honda Civic (2023)', status: 'Pending' },
     { id: '#VH-1040', owner: 'Vijay Setupati', vehicle: 'Tesla Model 3 (2024)', status: 'Approved' },
     { id: '#VH-1039', owner: 'Aayushma', vehicle: 'BMW X5 (2021)', status: 'Rejected' },
     { id: '#VH-1038', owner: 'Ritesh', vehicle: 'Ford Mustang (2022)', status: 'Approved' },
     { id: '#VH-1038', owner: 'Deekshya', vehicle: 'Ford Mustang (2022)', status: 'Approved' },
-    { id: '#VH-1038', owner: 'Abhisexy', vehicle: 'Ford Mustang (2022)', status: 'Approved' }
+    { id: '#VH-1038', owner: 'Abhishek', vehicle: 'Ford Mustang (2022)', status: 'Approved' }
   ];
 
   const filteredDrivers = filterStatus === 'All' 
@@ -142,6 +142,7 @@ const DriverVerification = () => {
             {selectedVehicle && (
               <VerificationDetails 
                 onClose={() => setSelectedVehicle(null)} 
+                vehicle={selectedVehicle}
               />
             )}
           </div>

@@ -14,11 +14,8 @@ const vehicles = [
     ratePerDay: 'Rs 3,000',
     carNumber: 'BA 1 JA 2023',
     phoneNumber: '+977 9876543210',
-    bookingType: 'Daily',
-    bookingDate: '2024-05-01',
+    bookingType: 'With Driver',
     driverName: 'John Doe',
-    status: 'Available',
-    location: 'Kathmandu',
   },
   // Add more vehicles with the same structure
   {
@@ -32,11 +29,8 @@ const vehicles = [
     ratePerDay: 'Rs 4,000',
     carNumber: 'BA 2 JA 2023',
     phoneNumber: '+977 9876543211',
-    bookingType: 'Weekly',
-    bookingDate: '2024-05-02',
+    bookingType: 'Without Driver',
     driverName: 'Jane Smith',
-    status: 'Booked',
-    location: 'Pokhara',
   },
   // Add more vehicle entries as needed
 ];
@@ -52,10 +46,8 @@ const columnHeadings = [
   'Car Number',
   'Phone Number',
   'Booking Type',
-  'Booking Date',
   'Driver Name',
-  'Status',
-  'Location',
+
   'Actions'
 ];
 
@@ -109,16 +101,7 @@ const VehicleTable = () => {
                   <div className="cell-content">{vehicle.bookingType}</div>
                 </td>
                 <td className="table-cell">
-                  <div className="cell-content">{vehicle.bookingDate}</div>
-                </td>
-                <td className="table-cell">
                   <div className="cell-content">{vehicle.driverName}</div>
-                </td>
-                <td className="table-cell">
-                  <div className="cell-content">{vehicle.status}</div>
-                </td>
-                <td className="table-cell">
-                  <div className="cell-content">{vehicle.location}</div>
                 </td>
                 <td className="table-cell actions-cell">
                   <button className="delete-button">

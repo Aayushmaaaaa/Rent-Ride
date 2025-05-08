@@ -1,0 +1,73 @@
+.active-vehicles-table-container {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    margin: 1rem;
+  }
+  
+  .table-scroll {
+    overflow-x: auto;
+  }
+  
+  .active-vehicles-table {
+    min-width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  
+  .active-vehicles-table thead {
+    background-color: #f3f4f6;
+  }
+  
+  .active-vehicles-table th {
+    padding: 0.75rem 1.5rem;
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #4b5563;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .active-vehicles-table tbody tr {
+    background-color: white;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .active-vehicles-table tbody tr:hover {
+    background-color: #f9fafb;
+  }
+  
+  .active-vehicles-table td {
+    padding: 1rem 1.5rem;
+    font-size: 0.875rem;
+    color: #111827;
+    white-space: nowrap;
+  }
+  
+  .main-layout {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .main-content {
+    flex: 1;
+    background-color: #f9fafb;
+  }
+  
+  .content-area {
+    padding: 2rem;
+  }
+  
+  .page-header {
+    margin-bottom: 2rem;
+  }
+  
+  .page-header h1 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    color: #111827;
+  }

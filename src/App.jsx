@@ -1,3 +1,4 @@
+// src/App.js
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import VehicleSearchPage from "./component/VehicleSearch/VehicleSearchPage";
@@ -8,6 +9,7 @@ import DetailsPage from "./component/DetailsPage/DetailsPage";
 import TermsAndPolicies from "./component/TermsAndPoliciesPage/TermsAndPoliciesPage";
 // Import the new component
 import DriverVerification from "./dealsDetails/DriverVerification";
+import VerificationDetails from "./dealsDetails/VerificationDetails";
 import UserVerification from "./dealsDetails/UserVerification";
 import ProfileSettings from "./dealsDetails/ProfileSettings";
 import DriftyPage from './component/dashboard/DriftyPage';
@@ -82,13 +84,11 @@ function App() {
       <Route path="/contact-us" element={<ContactUsPage />} />
       <Route path="/order-confirmed" element={<OrderConfirmation />} />
       <Route path="/details" element={<DetailsPage />} />
-      <Route path="/dealsdetails" element={<MainContent />} />
-      <Route path="driver-verification" element={<DriverVerification/>}/>
-      <Route path="user-verification" element={<UserVerification/>}/>
-      <Route path="profile-settings" element={<ProfileSettings/>} />
-      <Route path="/dealsdetails" element={<MainContent />} />
+      <Route path="/driver-verification" element={<DriverVerification />} />
+      <Route path="/user-verification" element={<UserVerification />} />
+      <Route path="/profile-settings" element={<ProfileSettings />} />
+      <Route path="/verification-details" element={<VerificationDetails />} />
     </Routes>
-    
   );
 }
 
