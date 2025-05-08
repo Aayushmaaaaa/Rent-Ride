@@ -3,15 +3,19 @@ import React, { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import VehicleSearchPage from "./component/VehicleSearch/VehicleSearchPage";
 import CarDetailPage from "./component/cardetails/CarDetailPage";
-import MainContent from "./dealsDetails/MainContent";
+
 import Booking from "./component/Booking/Booking";
 import DetailsPage from "./component/DetailsPage/DetailsPage";
 import TermsAndPolicies from "./component/TermsAndPoliciesPage/TermsAndPoliciesPage";
 // Import the new component
+
+
+import MainContent from "./dealsDetails/MainContent";
 import DriverVerification from "./dealsDetails/DriverVerification";
-import VerificationDetails from "./dealsDetails/VerificationDetails";
 import UserVerification from "./dealsDetails/UserVerification";
 import ProfileSettings from "./dealsDetails/ProfileSettings";
+
+import VerificationDetails from "./dealsDetails/VerificationDetails";
 import DriftyPage from './component/dashboard/DriftyPage';
 import RidesDashboard from './component/dashboard/RidesDashboard';
 import ListVehicleForm from "./component/List Your Vehicles/ListVehicleForm";
@@ -62,7 +66,7 @@ function App() {
       <Route path="/" element={<LandingPage isLoggedIn={isLoggedIn} />} />
       <Route path="/search" element={<VehicleSearchPage />} />
       <Route path="/cardetails/:id" element={<CarDetailPage isLoggedIn={isLoggedIn} />} />
-      <Route path="/dealsdetails" element={<MainContent />} />
+      
       <Route path="/booking/:id" element={<Booking />} /> {/* Your existing booking route */}
       {/* Add the new route for the Booking component after payment */}
       <Route path="/admin/dashboard" element={<div>Admin Dashboard Content</div>} />
@@ -84,9 +88,11 @@ function App() {
       <Route path="/contact-us" element={<ContactUsPage />} />
       <Route path="/order-confirmed" element={<OrderConfirmation />} />
       <Route path="/details" element={<DetailsPage />} />
+      <Route path="/dealsdetails" element={<MainContent />} />
       <Route path="/driver-verification" element={<DriverVerification />} />
       <Route path="/user-verification" element={<UserVerification />} />
       <Route path="/profile-settings" element={<ProfileSettings />} />
+      <Route path="/verification" element={<VerificationPage />} />
       <Route path="/verification-details" element={<VerificationDetails />} />
     </Routes>
   );
