@@ -19,6 +19,13 @@ function UserProfileDashboard() {
     navigate('/drifty'); // Define a route for your Drifty page
   };
 
+  const handleLogout = () => {
+    // In a real application, you would likely perform additional logout actions here,
+    // such as clearing user session data, tokens, etc.
+    console.log('User logged out');
+    navigate('/'); // Navigate to the landing page (which includes signup)
+  };
+
   return (
     <div className="user-profile-dashboard-container full-screen">
       <div className="left-icons">
@@ -47,6 +54,7 @@ function UserProfileDashboard() {
         </div>
       </div>
 
+      {/* Rest of your existing user profile dashboard code remains the same */}
       <div className="banner dark-banner">
         {/* Darker banner */}
       </div>
@@ -112,10 +120,14 @@ function UserProfileDashboard() {
           <button className="add-email-button">+ Add Email Address</button>
         </div>
       </div>
-      {/* Add the "Go to Homepage" button here */}
-      <button className="go-to-homepage-button" onClick={() => navigate('/')}>
-        Go to Homepage
+      {/* Add the "Logout" button here */}
+      <button className="logout-button" onClick={handleLogout}>
+        Logout
       </button>
+      {/* Keep the "Go to Homepage" button if you still need it */}
+      {/* <button className="go-to-homepage-button" onClick={() => navigate('/')}>
+        Go to Homepage
+      </button> */}
     </div>
   );
 }

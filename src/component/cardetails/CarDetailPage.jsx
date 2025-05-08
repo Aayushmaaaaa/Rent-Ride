@@ -8,10 +8,12 @@ const CarDetailPage = ({ isLoggedIn }) => {
   const navigate = useNavigate();
   const carName = `Vehicle ID: ${id}`;
   const [bookingType, setBookingType] = useState("self-drive"); // Default to self-drive
+  const [selectedDateTime, setSelectedDateTime] = useState(new Date()); // State to hold selected date and time
+  const [showDateTimeSelector, setShowDateTimeSelector] = useState(false);
 
   const handleBookClick = () => {
     if (isLoggedIn) {
-      navigate(`/payment/${id}?type=${bookingType}`); // Include booking type in the navigation
+      navigate(`/payment/${id}?type=${bookingType}&dateTime=${selectedDateTime.toISOString()}`); // Include date and time
     } else {
       navigate('/login/user'); // Navigate to login if not logged in
     }
@@ -19,6 +21,14 @@ const CarDetailPage = ({ isLoggedIn }) => {
 
   const handleBookingTypeChange = (type) => {
     setBookingType(type);
+  };
+
+  const handleDateTimeChange = (event) => {
+    setSelectedDateTime(new Date(event.target.value));
+  };
+
+  const toggleDateTimeSelector = () => {
+    setShowDateTimeSelector(!showDateTimeSelector);
   };
 
   return (
@@ -108,6 +118,17 @@ const CarDetailPage = ({ isLoggedIn }) => {
 
           <div className="book-box">
             <p className="date-label">Date & Time</p>
+            <button className="date-time-button" onClick={toggleDateTimeSelector}>
+              {selectedDateTime.toLocaleString()}
+            </button>
+            {showDateTimeSelector && (
+              <input
+                type="datetime-local"
+                value={selectedDateTime.toISOString().slice(0, 16)} // Format for datetime-local input
+                onChange={handleDateTimeChange}
+                className="date-time-input"
+              />
+            )}
             <button
               className="book-button"
               onClick={handleBookClick}

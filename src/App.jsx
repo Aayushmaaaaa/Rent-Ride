@@ -7,6 +7,8 @@ import Booking from "./component/Booking/Booking";
 import DetailsPage from "./component/DetailsPage/DetailsPage";
 import TermsAndPolicies from "./component/TermsAndPoliciesPage/TermsAndPoliciesPage";
 // Import the new component
+import DriftyPage from './component/dashboard/DriftyPage';
+
 import RidesDashboard from './component/dashboard/RidesDashboard';
 import ListVehicleForm from "./component/List Your Vehicles/ListVehicleForm";
 import UserProfileDashboard from './component/dashboard/UserProfileDashboard';
@@ -15,6 +17,7 @@ import LandingPage from "./component/Landingpage/Landingpage";
 import HomePage from "./component/Landingpage/HomePage";
 import AuthPage from "./AuthPage/AuthPage";
 import LoginPage from "./AuthPage/LoginPage";
+import AdminLoginPage from "./AuthPage/AdminLoginPage";
 import SignUp from "./AuthPage/SignUp";
 import ContactUsPage from "./component/ContactUs/ContactUsPage";
 import VerificationPage from "./VerificationPage/VerificationPage";
@@ -58,6 +61,7 @@ function App() {
       <Route path="/dealsdetails" element={<MainContent />} />
       <Route path="/booking/:id" element={<Booking />} /> {/* Your existing booking route */}
       {/* Add the new route for the Booking component after payment */}
+      <Route path="/admin/dashboard" element={<div>Admin Dashboard Content</div>} />
       <Route path="/terms-and-policies" element={<TermsAndPolicies />} /> 
       <Route path="/payment/:id/booking" element={<Booking />} />
       <Route path="/profile" element={<UserProfileDashboard />} />
@@ -70,6 +74,7 @@ function App() {
       <Route path="/verification" element={<VerificationPage onVerificationSuccess={handleVerificationSuccess} />} />
       {/* Add the route for the OrderConfirmation component */}
       <Route path="/rides" element={<RidesDashboard />} />
+      <Route path="/drifty" element={<DriftyPage />} />
       <Route path="/about-us" element={<AboutUsPage />} />
       <Route path="/contact-us" element={<ContactUsPage />} />
       <Route path="/order-confirmed" element={<OrderConfirmation />} />

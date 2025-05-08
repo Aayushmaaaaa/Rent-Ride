@@ -20,6 +20,7 @@ function ListVehicleForm() {
     interiorImage: null,
     bluebookDocument: null,
     insuranceDocument: null,
+    status: 'Pending',
   });
   const [imagePreviews, setImagePreviews] = useState({
     vehicleFrontImage: null,
@@ -32,7 +33,7 @@ function ListVehicleForm() {
   const [uploadErrors, setUploadErrors] = useState({});
   const [termsAgreed, setTermsAgreed] = useState(false);
   const [termsError, setTermsError] = useState('');
-  const [submissionStatus, setSubmissionStatus] = useState(null); // 'success', 'error', null
+  const [submissionStatus, setSubmissionStatus] = useState(null);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -83,7 +84,7 @@ function ListVehicleForm() {
 
   const handleTermsChange = (event) => {
     setTermsAgreed(event.target.checked);
-    setTermsError(''); // Clear error when the checkbox state changes
+    setTermsError('');
   };
 
   const validateForm = () => {
@@ -145,49 +146,22 @@ function ListVehicleForm() {
     event.preventDefault();
     if (validateForm()) {
       setSubmissionStatus('loading');
-      console.log('Vehicle Details (validated):', vehicleDetails);
+      console.log('Vehicle Details (submitted):', vehicleDetails, imagePreviews);
 
-      // Simulate API call (replace with your actual API call)
-      await new Promise(resolve => setTimeout(resolve, 2000)); // Wait for 2 seconds
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 2000));
 
       setSubmissionStatus('success');
-      // Optionally reset the form here
-      setVehicleDetails({
-        vehicleName: '',
-        type: '',
-        gearType: '',
-        seatNumbers: '',
-        airCondition: '',
-        vehicleNumber: '',
-        perDayRate: '',
-        rentalType: '',
-        phoneNumber: '',
-        vehicleFrontImage: null,
-        vehicleBackImage: null,
-        interiorImage: null,
-        bluebookDocument: null,
-        insuranceDocument: null,
-      });
-      setImagePreviews({
-        vehicleFrontImage: null,
-        vehicleBackImage: null,
-        interiorImage: null,
-        bluebookDocument: null,
-        insuranceDocument: null,
-      });
-      setErrors({});
-      setUploadErrors({});
-      setTermsAgreed(false);
-      setTermsError('');
+      setTimeout(() => navigate('/drifty'), 2000);
     } else {
       console.log('Form has errors. Please correct them.');
       setSubmissionStatus('error');
-      setTimeout(() => setSubmissionStatus(null), 3000); // Clear error message after 3 seconds
+      setTimeout(() => setSubmissionStatus(null), 3000);
     }
   };
 
   const handleGoToHomepage = () => {
-    navigate('/profile'); // Navigate to the logged-in user's homepage/profile
+    navigate('/profile');
   };
 
   return (
@@ -200,8 +174,8 @@ function ListVehicleForm() {
       {submissionStatus === 'success' && (
         <div className="submission-message success">
           Submitted Successfully!
-          <button type="button" onClick={handleGoToHomepage} className="homepage-button">
-            Go to Homepage
+          <button type="button" onClick={() => navigate('/drifty')} className="homepage-button">
+            Go to My Vehicles
           </button>
         </div>
       )}
@@ -220,7 +194,6 @@ function ListVehicleForm() {
               As your Gig storefront, your <strong>title is the most important place</strong> to include keywords that
               buyers would likely use to search for a service like yours.
             </p>
-            {/* Car Details Form Fields */}
             <div className="form-group">
               <label htmlFor="vehicleName">Vehicle Name</label>
               <input
@@ -351,7 +324,6 @@ function ListVehicleForm() {
 
           <div className="form-section">
             <h3>Vehicle Documents & Images</h3>
-            {/* File Upload Form Fields */}
             <div className="form-group">
               <label htmlFor="vehicleFrontImage">Vehicle Front Image</label>
               <input
