@@ -1,9 +1,62 @@
 import React, { useState } from 'react';
-import { Users } from 'lucide-react';
-import './DriverVerification.css'; // We'll reuse the same CSS since the layout is similar
+import { Users, ArrowLeft } from 'lucide-react';
+import './DriverVerification.css';
 import Sidebar from './Sidebar';
 import Nav from './Nav';
-import VerificationDetails from './VerificationDetails';
+
+const UserVerificationModal = ({ user, onClose }) => {
+  const handleReject = () => {
+    // Handle rejection logic here
+    onClose();
+  };
+
+  const handleApprove = () => {
+    // Handle approval logic here
+    onClose();
+  };
+
+  return (
+    <div className="verification-details-overlay">
+      <div className="verification-details-container">
+        <div className="verification-header">
+          <button className="back-button" onClick={onClose}>
+            <ArrowLeft size={20} />
+            <span>Back</span>
+          </button>
+          <h2>Personal Information</h2>
+        </div>
+
+        <div className="verification-content">
+          <div className="user-docs-grid">
+            <div className="user-doc-item">
+              <h3>Licence Photo</h3>
+              <div className="doc-preview">
+                <img src="/license.jpg" alt="License" />
+              </div>
+            </div>
+            <div className="user-doc-item">
+              <h3>Passport Size Photo</h3>
+              <div className="doc-preview">
+                <img src="/passport.jpg" alt="Passport" />
+              </div>
+            </div>
+          </div>
+
+          <div className="verification-actions">
+            <button className="reject-button" onClick={handleReject}>
+              <span className="button-icon">✕</span>
+              Reject Verification
+            </button>
+            <button className="approve-button" onClick={handleApprove}>
+              <span className="button-icon">✓</span>
+              Approve Verification
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const UserVerification = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -140,7 +193,8 @@ const UserVerification = () => {
             </div>
 
             {selectedUser && (
-              <VerificationDetails 
+              <UserVerificationModal 
+                user={selectedUser}
                 onClose={() => setSelectedUser(null)} 
               />
             )}

@@ -9,6 +9,8 @@ import HomePage from "./component/Landingpage/HomePage";
 import DriverVerification from "./dealsDetails/DriverVerification";
 import UserVerification from "./dealsDetails/UserVerification";
 import ProfileSettings from "./dealsDetails/ProfileSettings";
+import ActiveVehiclesTable from "./dealsDetails/ActiveVehiclesTable";
+import PaymentListing from "./dealsDetails/PaymentListing";
 
 function App() {
   return (
@@ -21,9 +23,11 @@ function App() {
         <Route path="/dealsdetails">
           <Route index element={<MainContent/>}/>
           <Route path="vehicles" element={<MainContent/>}/>
+          <Route path="active-vehicles" element={<ActiveVehiclesTable/>}/>
           <Route path="driver-verification" element={<DriverVerification/>}/>
           <Route path="user-verification" element={<UserVerification/>}/>
           <Route path="profile-settings" element={<ProfileSettings/>} />
+          <Route path="payments" element={<PaymentListing/>} />
         </Route>
         <Route path="/booking/:id" element={<Booking/>}/>
       </Routes>
