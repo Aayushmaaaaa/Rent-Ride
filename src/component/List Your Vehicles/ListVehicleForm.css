@@ -1,0 +1,206 @@
+/* src/component/List Your Vehicles/ListVehicleForm.css */
+.list-vehicle-form-container {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 25px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    position: relative; /* For positioning the success message */
+  }
+  
+  .form-header {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .form-header h2 {
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .form-header .form-date {
+    color: #777;
+    font-size: 0.9em;
+  }
+  
+  .form-section {
+    margin-bottom: 25px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+  }
+  
+  .form-section h3 {
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  .form-section .section-description {
+    color: #666;
+    font-size: 0.95em;
+    margin-bottom: 15px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #444;
+  }
+  
+  .form-group input[type="text"],
+  .form-group input[type="number"],
+  .form-group input[type="tel"],
+  .form-group input[type="file"],
+  .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+  }
+  
+  .form-group select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg fill="%23343a40" viewBox="0 0 4 5"><path d="M2 0L0 2h4L2 0z"/></svg>');
+    background-repeat: no-repeat;
+    background-position-x: 98%;
+    background-position-y: 50%;
+    padding-right: 25px;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .form-row .form-group {
+    flex: 1;
+    margin-bottom: 0;
+  }
+  
+  .image-preview {
+    max-width: 150px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .submit-button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+  }
+  
+  .form-notice {
+    background-color: #ffe0b2; /* Light orange background */
+    color: #d84315; /* Darker orange text */
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9em;
+  }
+  
+  .notice-icon {
+    font-size: 1.2em;
+  }
+  
+  .form-agreement {
+    margin-bottom: 20px;
+    font-size: 0.95em;
+    color: #555;
+  }
+  
+  .form-agreement label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+  
+  .form-agreement input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .form-agreement a {
+    color: #007bff;
+    text-decoration: underline;
+  }
+  
+  .form-agreement a:hover {
+    color: #0056b3;
+  }
+  
+  /* Styles for the submission success message */
+  .submission-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.1em;
+    z-index: 10;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .submission-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+  
+  .submission-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+  
+  .submission-message button.homepage-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submission-message button.homepage-button:hover {
+    background-color: #1e7e34;
+  }
+  
+  .submission-message button {
+    margin-left: 10px;
+  }

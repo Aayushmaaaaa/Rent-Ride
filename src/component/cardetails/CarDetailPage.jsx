@@ -1,5 +1,5 @@
 // src/component/cardetails/CarDetailPage.jsx
-import React from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./CarDetailPage.css";
 
@@ -7,13 +7,18 @@ const CarDetailPage = ({ isLoggedIn }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const carName = `Vehicle ID: ${id}`;
+  const [bookingType, setBookingType] = useState("self-drive"); // Default to self-drive
 
   const handleBookClick = () => {
     if (isLoggedIn) {
-      navigate(`/payment/${id}`); // Navigate to the PaymentPage with the car ID
+      navigate(`/payment/${id}?type=${bookingType}`); // Include booking type in the navigation
     } else {
       navigate('/login/user'); // Navigate to login if not logged in
     }
+  };
+
+  const handleBookingTypeChange = (type) => {
+    setBookingType(type);
   };
 
   return (
@@ -74,6 +79,25 @@ const CarDetailPage = ({ isLoggedIn }) => {
           <div className="detail-item">
             <span>💲 Rate</span>
             <span className="value bold">$250/day</span>
+          </div>
+
+          {/* Booking Type Selection */}
+          <div className="booking-type-selection">
+            <p className="booking-type-label">Booking Type:</p>
+            <div className="booking-options">
+              <button
+                className={`booking-option-button ${bookingType === 'self-drive' ? 'active' : ''}`}
+                onClick={() => handleBookingTypeChange('self-drive')}
+              >
+                Self Drive
+              </button>
+              <button
+                className={`booking-option-button ${bookingType === 'with-driver' ? 'active' : ''}`}
+                onClick={() => handleBookingTypeChange('with-driver')}
+              >
+                With Driver
+              </button>
+            </div>
           </div>
 
           <p className="note-text">

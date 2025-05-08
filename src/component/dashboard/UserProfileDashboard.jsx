@@ -1,4 +1,4 @@
- // src/component/dashboard/UserProfileDashboard.jsx
+// src/component/dashboard/UserProfileDashboard.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './UserProfileDashboard.css';
@@ -15,11 +15,18 @@ function UserProfileDashboard() {
     year: 'numeric'
   });
 
+  const goToDriftyPage = () => {
+    navigate('/drifty'); // Define a route for your Drifty page
+  };
+
   return (
     <div className="user-profile-dashboard-container full-screen">
       <div className="left-icons">
         <div className="left-icon active">☰</div>
-        <div className="left-icon" onClick={() => navigate('/rides')}>⚙</div>
+        <div className="left-icon settings-with-drifty">
+          <div className="settings-icon" onClick={() => navigate('/rides')}>⚙</div>
+          <div className="drifty-text" onClick={goToDriftyPage}>Drifty</div>
+        </div>
       </div>
       <div className="header">
         <div className="welcome-date">
@@ -40,7 +47,6 @@ function UserProfileDashboard() {
         </div>
       </div>
 
-      {/* Rest of your existing user profile dashboard code remains the same */}
       <div className="banner dark-banner">
         {/* Darker banner */}
       </div>
