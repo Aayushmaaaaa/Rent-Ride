@@ -1,11 +1,20 @@
+// src/component/cardetails/CarDetailPage.jsx
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./CarDetailPage.css";
 
-const CarDetailPage = () => {
+const CarDetailPage = ({ isLoggedIn }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const carName = `Vehicle ID: ${id}`;
+
+  const handleBookClick = () => {
+    if (isLoggedIn) {
+      navigate(`/payment/${id}`); // Navigate to the PaymentPage with the car ID
+    } else {
+      navigate('/login/user'); // Navigate to login if not logged in
+    }
+  };
 
   return (
     <div className="car-detail-container">
@@ -77,7 +86,7 @@ const CarDetailPage = () => {
             <p className="date-label">Date & Time</p>
             <button
               className="book-button"
-              onClick={() => navigate(`/booking/${id}`)}
+              onClick={handleBookClick}
             >
               BOOK NOW
             </button>

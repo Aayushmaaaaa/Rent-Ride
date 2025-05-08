@@ -1,0 +1,166 @@
+/* Signup.css */
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .signup-container {
+    display: flex;
+    height: 100vh;
+    font-family: sans-serif;
+    background-color: white;
+  }
+  
+  .signup-form {
+    width: 350px;
+    padding: 40px;
+    margin: 80px auto 0 20px;
+  }
+  
+  .signup-button {
+    width: 100%;
+    padding: 15px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    margin-top: 20px;
+  }
+  
+  .logo-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 10px;
+    z-index: 3;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+    height: auto;
+  }
+  
+  .logo img {
+    width: 100px;
+    height: auto;
+  }
+  
+  h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  
+  p {
+    font-size: 0.9em;
+    margin-bottom: 20px;
+    color: #666;
+    text-align: left;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.85em;
+    font-family: sans-serif;
+  }
+  
+  input::placeholder {
+    color: #999;
+    font-style: normal;
+  }
+  
+  label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 0.9em;
+    text-align: left;
+  }
+  
+  label input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  .social-signup {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+  }
+  
+  .google-signup,
+  .apple-signup {
+    width: 48%;
+    padding: 10px;
+    background-color: white;
+    color: black;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+  }
+  
+  .google-signup img,
+  .apple-signup img {
+    width: 20px;
+    margin-right: 10px;
+  }
+  
+  .or-divider {
+    text-align: center;
+    margin: 15px 0;
+    color: #999;
+    font-size: 0.9em;
+  }
+  
+  .login-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+    font-weight: bold;
+  }
+  
+  .login-link a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .signup-image {
+    width: 50%;
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  
+  .signup-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    text-align: left;
+  }

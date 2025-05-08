@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./LandingPage.css";
-
-// Import all images
+import { Link } from "react-router-dom";
 import Logo from "../Images/Logo.png";
 import Car1 from "../Images/no1.png";
 import Car2 from "../Images/no2.png";
@@ -14,64 +13,58 @@ import Car8 from "../Images/no8.png";
 import Car9 from "../Images/no9.png";
 import Car10 from "../Images/no10.png";
 import RouteMap from "../Images/Middlemap.png";
+import videoFile from "../Images/video.mp4"; // Assuming video.mp4 is in the public folder
 
-function LandingPage() {
+function LandingPage({ isLoggedIn }) {
   const [pickupDate, setPickupDate] = useState("");
-  const [returnDate, setReturnDate] = useState(""); 
+  const [returnDate, setReturnDate] = useState("");
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+
+  const openVideoModal = () => {
+    setIsVideoModalOpen(true);
+  };
+
+  const closeVideoModal = () => {
+    setIsVideoModalOpen(false);
+  };
+
   const featuredVehicles = [
-    {
-      brand: "Mercedes",
-      features: ["H Automatic", "Conditioner"],
-      image: Car3,
-    },
-    {
-      brand: "Mercedes",
-      features: ["H Automatic", "Conditioner"],
-      image: Car4,
-    },
-    {
-      brand: "Mercedes",
-      features: ["H Automatic", "Conditioner"],
-      image: Car5,
-    },
-    {
-      brand: "Portable",
-      features: ["H Automatic", "Conditioner"],
-      image: Car6,
-    },
-    {
-      brand: "Toyota",
-      features: ["H Automatic", "Conditioner"],
-      image: Car7,
-    },
-    {
-      brand: "Portable",
-      features: ["H Automatic", "Conditioner"],
-      image: Car8,
-    },
-    {
-      brand: "Mercedes",
-      features: ["H Automatic", "Conditioner"],
-      image: Car9,
-    },
-    {
-      brand: "Mercedes",
-      features: ["H Automatic", "Conditioner"],
-      image: Car10,
-    },
+    { brand: "Mercedes", features: ["H Automatic", "Conditioner"], image: Car3, id: "mercedes1" },
+    { brand: "Mercedes", features: ["H Automatic", "Conditioner"], image: Car4, id: "mercedes2" },
+    { brand: "Mercedes", features: ["H Automatic", "Conditioner"], image: Car5, id: "mercedes3" },
+    { brand: "Portable", features: ["H Automatic", "Conditioner"], image: Car6, id: "portable1" },
+    { brand: "Toyota", features: ["H Automatic", "Conditioner"], image: Car7, id: "toyota1" },
+    { brand: "Portable", features: ["H Automatic", "Conditioner"], image: Car8, id: "portable2" },
+    { brand: "Mercedes", features: ["H Automatic", "Conditioner"], image: Car9, id: "mercedes4" },
+    { brand: "Mercedes", features: ["H Automatic", "Conditioner"], image: Car10, id: "mercedes5" },
   ];
 
   return (
     <div className="app-container">
       <nav className="navbar">
-        <img src={Logo} alt="Logo" className="logo" />
+        <div className="nav-left">
+          <img src={Logo} alt="Logo" className="logo" />
+        </div>
         <div className="nav-links">
-          <a href="#">Home</a>
-          <a href="#">Vehicles</a>
-          <a href="#">Details</a>
-          <a href="#">About Us</a>
-          <a href="#">Contact Us</a>
-          <button className="signup-btn">Sign Up</button>
+          <Link to="/" onClick={() => window.scrollTo(0, 0)}>Home</Link>
+          <Link to="/search">Vehicles</Link>
+          <Link to="/list-your-vehicles">List Your Vehicles</Link> {/* Added this line */}
+          <Link to="/details">Details</Link>
+          <Link to="/about-us">About Us</Link>
+          <Link to="/contact-us">Contact Us</Link>
+          {isLoggedIn ? (
+            <Link
+              to="/profile"
+              className="profile-btn"
+              style={{ pointerEvents: 'auto' }}
+            >
+              Your Profile
+            </Link>
+          ) : (
+            <Link to="/auth" className="signup-btn">
+              Sign Up
+            </Link>
+          )}
         </div>
       </nav>
 
@@ -100,7 +93,9 @@ function LandingPage() {
           </p>
           <div className="hero-buttons">
             <button className="book-btn">Book Now</button>
-            <button className="video-btn">Watch Video</button>
+            <button className="video-btn" onClick={openVideoModal}>
+              Watch Video
+            </button>
           </div>
         </div>
       </div>
@@ -183,7 +178,16 @@ function LandingPage() {
                   <li key={i}>{feature}</li>
                 ))}
               </ul>
-              <button>View Details</button>
+              <Link
+                to={`/cardetails/${vehicle.id}`}
+                style={{ display: 'inline-block', textDecoration: 'none' }}
+                onClick={(event) => {
+                  // You can add debugging here if needed
+                  // console.log("View Details clicked");
+                }}
+              >
+                <button style={{ display: 'block', width: '100%' }}>View Details</button>
+              </Link>
             </div>
           ))}
         </div>
@@ -205,7 +209,9 @@ function LandingPage() {
             lobortis.
           </p>
           <div className="divider"></div>
-          <button className="explore-button">EXPLORE MORE</button>
+          <Link to="/about-us" className="explore-button-link">
+            <button className="explore-button">EXPLORE MORE</button>
+          </Link>
         </div>
       </section>
 
@@ -259,7 +265,7 @@ function LandingPage() {
           <div className="footer-section">
             <h4>COMPANY</h4>
             <ul>
-              <li>About Us</li>
+              <li><Link to="/about-us">About Us</Link></li>
               <li>Careers</li>
               <li>Press</li>
             </ul>
@@ -275,7 +281,7 @@ function LandingPage() {
           <div className="footer-section">
             <h4>SUPPORT</h4>
             <ul>
-              <li>Contact Us</li>
+              <li><Link to="/contact-us">Contact Us</Link></li>
               <li>FAQs</li>
             </ul>
           </div>
@@ -290,6 +296,20 @@ function LandingPage() {
         </div>
         <p className="copyright">© 2025 Drifty. All rights reserved.</p>
       </footer>
+
+      {isVideoModalOpen && (
+        <div className="video-modal">
+          <div className="video-modal-content">
+            <video width="560" height="315" controls>
+              <source src={videoFile} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <button className="go-back-button" onClick={closeVideoModal}>
+              Go Back
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

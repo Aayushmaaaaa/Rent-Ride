@@ -1,0 +1,96 @@
+/* src/components/VerificationPage.css */
+.verification-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: sans-serif;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .left-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    z-index: 10;
+  }
+  
+  .verification-logo {
+    width: 120px; /* Adjust logo size */
+  }
+  
+  h1 {
+    font-size: 2.8em; /* Big handwriting */
+    margin-bottom: 15px;
+    font-weight: 900; /* Bold type */
+  }
+  
+  p {
+    margin-bottom: 40px; /* Increased space below email text */
+    font-weight: 700; /* Slightly less bold than heading */
+    color: #444;
+    font-size: 1em;
+    text-align: center;
+  }
+  
+  .code-inputs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 35px; /* Increased space below inputs */
+    width: 100%;
+    max-width: 500px; /* Adjust max width */
+  }
+  
+  .code-inputs > div { /* Container for each group of 3 inputs */
+    display: flex;
+  }
+  
+  .code-inputs > div:not(:last-child) { /* Add space after the first group */
+    margin-right: 30px;
+  }
+  
+  .code-inputs input {
+    width: 60px; /* Bigger input boxes */
+    height: 60px; /* Bigger input boxes */
+    margin: 0 10px;
+    text-align: center;
+    font-size: 1.5em; /* Bigger font in boxes */
+    font-weight: bold; /* Bold numbers */
+    border: 1px solid #ccc;
+    border-radius: 8px; /* More rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  button {
+    padding: 15px 35px;
+    font-size: 1.1em;
+    font-weight: 700; /* Bold button text */
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 25px;
+  }
+  
+  button:hover {
+    background-color: #555;
+  }
+  
+  .resend-code {
+    font-size: 0.85em;
+    color: #777;
+  }
+  
+  .resend-code a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .resend-code a:hover {
+    text-decoration: underline;
+  }

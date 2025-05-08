@@ -7,11 +7,11 @@
 .car-main {
     display: flex;
     justify-content: space-between;
-    background: rgb(67, 64, 64);
+    background: #fff; /* Changed background to white */
     border-radius: 30px;
     padding: 40px;
     border: 4px solid #000;
-}
+  }
 
 .back-button {
     position: absolute;
