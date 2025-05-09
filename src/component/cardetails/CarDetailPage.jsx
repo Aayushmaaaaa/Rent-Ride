@@ -1,35 +1,66 @@
-// src/component/cardetails/CarDetailPage.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./CarDetailPage.css";
 
 const CarDetailPage = ({ isLoggedIn }) => {
-  const { id } = useParams();
+  const { id } = useParams(); // Get the car ID from the URL
   const navigate = useNavigate();
-  const carName = `Vehicle ID: ${id}`;
-  const [bookingType, setBookingType] = useState("self-drive"); // Default to self-drive
-  const [selectedDateTime, setSelectedDateTime] = useState(new Date()); // State to hold selected date and time
-  const [showDateTimeSelector, setShowDateTimeSelector] = useState(false);
+  const [car, setCar] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [bookingType, setBookingType] = useState("self-drive"); // Default booking type
+  const [selectedDateTime, setSelectedDateTime] = useState(new Date()); // Default to current date and time
+  const [showDateTimeSelector, setShowDateTimeSelector] = useState(false); // To toggle date-time selector
 
+  // Fetch car details based on the ID when the component mounts
+  useEffect(() => {
+    const fetchCar = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/cars/681d140faaca183a091411b8`
+          // Fetch car data from backend
+        );
+        setCar(response.data);
+      } catch (err) {
+        console.error("Failed to fetch car:", err);
+      } finally {
+        setLoading(false); // Set loading to false once data is fetched
+      }
+    };
+
+    fetchCar();
+  }, [id]);
+
+  // Handle booking button click
   const handleBookClick = () => {
     if (isLoggedIn) {
-      navigate(`/payment/${id}?type=${bookingType}&dateTime=${selectedDateTime.toISOString()}`); // Include date and time
+      // Navigate to payment page with selected booking type and date-time
+      navigate(
+        `/payment/${id}?type=${bookingType}&dateTime=${selectedDateTime.toISOString()}`
+      );
     } else {
-      navigate('/login/user'); // Navigate to login if not logged in
+      navigate("/login/user"); // If not logged in, navigate to login page
     }
   };
 
+  // Change the booking type
   const handleBookingTypeChange = (type) => {
     setBookingType(type);
   };
 
+  // Handle date-time selection
   const handleDateTimeChange = (event) => {
     setSelectedDateTime(new Date(event.target.value));
   };
 
+  // Toggle the visibility of the date-time selector
   const toggleDateTimeSelector = () => {
     setShowDateTimeSelector(!showDateTimeSelector);
   };
+
+  // Loading state
+  if (loading) return <p>Loading...</p>;
+  if (!car) return <p>Car not found.</p>;
 
   return (
     <div className="car-detail-container">
@@ -39,12 +70,16 @@ const CarDetailPage = ({ isLoggedIn }) => {
         </button>
 
         <div className="car-info">
-          <h2 className="car-brand">Mercedes-Benz</h2>
-          <p className="car-model">{carName}</p>
+          <h2 className="car-brand">{car.carName}</h2>
+          <p className="car-model">Vehicle ID: {car._id}</p>
           <img
-            src="/images/mercedes.png"
-            alt="Mercedes S-Class"
+            src={`http://localhost:5000/uploads/${car.photo[0]}`} // Assuming the first photo is used
+            alt={car.carName}
             className="car-image"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "/images/default-car.png"; // Fallback image if car image doesn't load
+            }}
           />
 
           <div className="color-dots">
@@ -55,70 +90,68 @@ const CarDetailPage = ({ isLoggedIn }) => {
           </div>
 
           <div className="features">
-            <p>comfort</p>
-            <p>smooth</p>
-            <p>luxury</p>
+            <p>Gear: {car.gearType}</p>
+            <p>AC: {car.airCondition}</p>
+            <p>Seats: {car.seats}</p>
           </div>
 
           <div className="rating">
-            <p>Lorem ipsum dolor sit amet consectetur.</p>
-            <h1>5.0</h1>
+            <p>{car.description || "No description available."}</p>
+            <h1>4.8</h1>
           </div>
         </div>
 
         <div className="car-details">
           <h2>Details</h2>
           <p className="details-desc">
-            Lorem ipsum dolor sit amet consectetur. Nulla scelerisque posuere
-            amet a at. Hendrerit lectus eu rhoncus elit turpis dictumst massa
-            volutpat.
+            {car.details || "No additional details provided."}
           </p>
 
           <div className="detail-item">
-            <span>⚙️ Automate</span>
-            <span className="value">Yes</span>
+            <span>⚙️ Gear</span>
+            <span className="value">{car.gearType}</span>
           </div>
           <div className="detail-item">
             <span>❄️ Air Conditioner</span>
-            <span className="value">Yes</span>
+            <span className="value">{car.airCondition}</span>
           </div>
           <div className="detail-item">
             <span>🧍 Seater</span>
-            <span className="value">5</span>
+            <span className="value">{car.seats}</span>
           </div>
           <div className="detail-item">
             <span>💲 Rate</span>
-            <span className="value bold">$250/day</span>
+            <span className="value bold">{car.ratePerDay || "$200/day"}</span>
           </div>
 
-          {/* Booking Type Selection */}
           <div className="booking-type-selection">
             <p className="booking-type-label">Booking Type:</p>
             <div className="booking-options">
               <button
-                className={`booking-option-button ${bookingType === 'self-drive' ? 'active' : ''}`}
-                onClick={() => handleBookingTypeChange('self-drive')}
+                className={`booking-option-button ${
+                  bookingType === "self-drive" ? "active" : ""
+                }`}
+                onClick={() => handleBookingTypeChange("self-drive")}
               >
                 Self Drive
               </button>
               <button
-                className={`booking-option-button ${bookingType === 'with-driver' ? 'active' : ''}`}
-                onClick={() => handleBookingTypeChange('with-driver')}
+                className={`booking-option-button ${
+                  bookingType === "with-driver" ? "active" : ""
+                }`}
+                onClick={() => handleBookingTypeChange("with-driver")}
               >
                 With Driver
               </button>
             </div>
           </div>
 
-          <p className="note-text">
-            Lorem ipsum dolor sit amet consectetur. Blandit id vitae libero
-            gravida integer in justo. Habitasse suspendisse eu vitae id.
-            Tristique . In fermentum laoreet a quam. Et dui.
-          </p>
-
           <div className="book-box">
             <p className="date-label">Date & Time</p>
-            <button className="date-time-button" onClick={toggleDateTimeSelector}>
+            <button
+              className="date-time-button"
+              onClick={toggleDateTimeSelector}
+            >
               {selectedDateTime.toLocaleString()}
             </button>
             {showDateTimeSelector && (
@@ -129,10 +162,7 @@ const CarDetailPage = ({ isLoggedIn }) => {
                 className="date-time-input"
               />
             )}
-            <button
-              className="book-button"
-              onClick={handleBookClick}
-            >
+            <button className="book-button" onClick={handleBookClick}>
               BOOK NOW
             </button>
           </div>

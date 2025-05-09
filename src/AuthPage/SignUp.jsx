@@ -1,50 +1,70 @@
-// src/AuthPage/SignUp.jsx
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import './SignUp.css';
-import googleLogo from '../assets/google.png';
-import appleLogo from '../assets/apple-logo.png';
-import audiCar from '../assets/audi-car.png';
-import driftyLogo from '../assets/drifty-logo.png';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./SignUp.css";
+import googleLogo from "../assets/google.png";
+import appleLogo from "../assets/apple-logo.png";
+import audiCar from "../assets/audi-car.png";
+import driftyLogo from "../assets/drifty-logo.png";
 
 function SignUp({ onSignupSuccess }) {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [agreeTerms, setAgreeTerms] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const validateForm = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!name) {
-      setError('Please enter your name.');
+      setError("Please enter your name.");
       return false;
     }
     if (!emailRegex.test(email)) {
-      setError('Please enter a valid email address.');
+      setError("Please enter a valid email address.");
       return false;
     }
     if (password.length < 6) {
-      setError('Password must be at least 6 characters.');
+      setError("Password must be at least 6 characters.");
       return false;
     }
     if (!agreeTerms) {
-      setError('Please agree to the terms & policy.');
+      setError("Please agree to the terms & policy.");
       return false;
     }
-    setError('');
+    setError("");
     return true;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateForm()) {
-      console.log('Signup submitted:', { name, email, password, agreeTerms });
-      console.log('Simulating successful signup...');
-      alert('Sign Up Successful! Navigating to verification...');
-      onSignupSuccess(); // Call the callback to update isLoggedIn in App
-      navigate("/verification");
+    if (!validateForm()) return;
+
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+          agreeTerms,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Signup failed");
+      }
+
+      alert("Sign Up Successful! Navigating to verification...");
+      onSignupSuccess(); // Notify parent component
+      navigate("/verification"); // Redirect to verification page
+    } catch (err) {
+      setError(err.message);
     }
   };
 
@@ -85,7 +105,9 @@ function SignUp({ onSignupSuccess }) {
             Agree to the terms & policy
           </label>
           {error && <div className="error-message">{error}</div>}
-          <button type="submit" className="signup-button">Signup</button>
+          <button type="submit" className="signup-button">
+            Signup
+          </button>
         </form>
         <div className="or-divider">or</div>
         <div className="social-signup">
