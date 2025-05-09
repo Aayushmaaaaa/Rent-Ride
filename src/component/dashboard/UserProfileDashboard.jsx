@@ -23,7 +23,8 @@ function UserProfileDashboard() {
     // In a real application, you would likely perform additional logout actions here,
     // such as clearing user session data, tokens, etc.
     console.log('User logged out');
-    navigate('/'); // Navigate to the landing page (which includes signup)
+    localStorage.removeItem('isLoggedIn'); // Ensure login status is cleared
+    navigate('/'); // Navigate to the landing page
   };
 
   return (

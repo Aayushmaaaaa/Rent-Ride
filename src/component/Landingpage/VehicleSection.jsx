@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import VehicleCard from "./VehicleCard";
+import { useNavigate } from "react-router-dom";
 
 import no3 from "../Images/no3.png";
 import no4 from "../Images/no4.png";
 import no5 from "../Images/no5.png";
 import no6 from "../Images/no6.png";
 
-const VehicleSection = () => {
+const VehicleSection = ({ isLoggedIn }) => {
+  const navigate = useNavigate();
   const categories = ["All vehicles", "Sedan", "Sport", "SUV"];
 
   const vehicles = [
@@ -108,6 +110,12 @@ const VehicleSection = () => {
     selectedCategory === "All vehicles"
       ? vehicles
       : vehicles.filter((car) => car.type === selectedCategory);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/home"); // Redirect to the home page if logged in
+    }
+  }, [isLoggedIn, navigate]);
 
   return (
     <section className="vehicle-section">

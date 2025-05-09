@@ -19,6 +19,13 @@ function LandingPage({ isLoggedIn }) {
   const [pickupDate, setPickupDate] = useState("");
   const [returnDate, setReturnDate] = useState("");
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+    // You can implement the actual search logic here or in a parent component
+    console.log("Search query:", event.target.value);
+  };
 
   const openVideoModal = () => {
     setIsVideoModalOpen(true);
@@ -98,6 +105,17 @@ function LandingPage({ isLoggedIn }) {
             </button>
           </div>
         </div>
+      </div>
+
+      <div className="search-box-container">
+        <input
+          type="text"
+          placeholder="Search for vehicles..."
+          className="search-input"
+          value={searchQuery}
+          onChange={handleSearchChange}
+        />
+        <button className="search-button">Search</button>
       </div>
 
       <div className="benefits-container">

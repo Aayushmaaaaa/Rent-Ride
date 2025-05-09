@@ -13,7 +13,7 @@ const CarDetailPage = ({ isLoggedIn }) => {
 
   const handleBookClick = () => {
     if (isLoggedIn) {
-      navigate(`/payment/${id}?type=${bookingType}&dateTime=${selectedDateTime.toISOString()}`); // Include date and time
+      navigate(`/kyc-verification`); // Navigate to KYC verification
     } else {
       navigate('/login/user'); // Navigate to login if not logged in
     }

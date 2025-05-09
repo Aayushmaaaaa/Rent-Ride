@@ -6,6 +6,7 @@ import CarDetailPage from "./component/cardetails/CarDetailPage";
 import Booking from "./component/Booking/Booking";
 import DetailsPage from "./component/DetailsPage/DetailsPage";
 import TermsAndPolicies from "./component/TermsAndPoliciesPage/TermsAndPoliciesPage";
+import KycVerification from "./component/KycVerification/KycVerification";
 // Import the new component
 import MainContent from "./dealsDetails/MainContent";
 import DriverVerification from "./dealsDetails/DriverVerification";
@@ -83,6 +84,7 @@ function App() {
       <Route path="/contact-us" element={<ContactUsPage />} />
       <Route path="/order-confirmed" element={<OrderConfirmation />} />
       <Route path="/details" element={<DetailsPage />} />
+      <Route path="/kyc-verification" element={<KycVerification />} />
 
       {/* Deals Details Routes (Nested) */}
       <Route path="/dealsdetails/*" element={<DealsDetailsRoutes />} />
