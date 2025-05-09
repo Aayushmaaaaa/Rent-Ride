@@ -90,20 +90,8 @@ const VerificationDetails = ({ onClose, vehicle }) => {
                   <span>+977 9840815555</span>
                 </div>
                 <div className="detail-item">
-                  <label>Location</label>
-                  <span>Kathmandu, Nepal</span>
-                </div>
-                <div className="detail-item">
                   <label>Member Since</label>
                   <span>07 Jun 2022</span>
-                </div>
-                <div className="detail-item">
-                  <label>Total Rentals</label>
-                  <span>32</span>
-                </div>
-                <div className="detail-item">
-                  <label>Rating</label>
-                  <span className="rating">4.8/5.0 ⭐</span>
                 </div>
                 <div className="detail-item">
                   <label>ID Verified</label>

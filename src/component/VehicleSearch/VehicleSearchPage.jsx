@@ -136,6 +136,13 @@ const VehicleSearchPage = () => {
     navigate(`/cardetails/${vehicleId}`);
   };
 
+  const goToHomepage = () => {
+    // We simply navigate to the root path ("/").
+    // The LandingPage component will handle whether to show the logged-in
+    // version based on the isLoggedIn prop it receives.
+    navigate("/");
+  };
+
   const featuredVehicles = Object.values(vehicleData).filter(
     (vehicle) =>
       vehicle.price >= priceRange[0] && vehicle.price <= priceRange[1]
@@ -270,6 +277,11 @@ const VehicleSearchPage = () => {
           ))}
         </div>
       </div>
+
+      {/* Go to Homepage Button */}
+      <button className="homepage-btn" onClick={goToHomepage}>
+        Go to Homepage
+      </button>
     </div>
   );
 };

@@ -1,11 +1,12 @@
-// src/VerificationPage/VerificationPage.jsx
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import logo from "../assets/drifty-logo.png";
-import "./Verification.css"; // Assuming the CSS file is now correctly named and located
+import "./Verification.css";
 
 function VerificationPage({ onVerificationSuccess }) {
   const [code, setCode] = useState(['', '', '', '', '', '']);
   const [error, setError] = useState('');
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleCodeChange = (index, value) => {
     if (/^\d?$/.test(value)) {
@@ -28,7 +29,7 @@ function VerificationPage({ onVerificationSuccess }) {
     if (enteredCode === '123456') {
       console.log('Code Matched! Calling onVerificationSuccess...');
       onVerificationSuccess(); // Call the prop to update state in App.js
-      // Navigation to / will now happen in App.js useEffect
+      navigate('/'); // Use navigate to go to the home page
     } else {
       console.log('Code Did NOT Match! Displaying error...');
       setError('Invalid verification code.');
