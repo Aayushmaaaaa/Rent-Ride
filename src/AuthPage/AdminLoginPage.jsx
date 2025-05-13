@@ -20,11 +20,11 @@ const AdminLoginPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // In a real application, you would authenticate against a backend.
-    if (username === "admin" && password === "123456") {
+    // Authenticate with fixed credentials
+    if (username === "Bijay Dai" && password === "BIJAYADMIN") {
       console.log("Admin logged in successfully!");
       // Redirect to the MainContent route
-      navigate("/dealsdetails"); // Assuming "/dealsdetails" is the correct route
+      navigate("/dealsdetails"); // This routes to MainContent as per your App.js
     } else {
       setError("Invalid username or password.");
     }
@@ -35,7 +35,7 @@ const AdminLoginPage = () => {
       <div className="admin-login-card">
         <div className="admin-login-header">
           <Link to="/" className="back-link">
-            &larr; Back to Login Options
+            ← Back to Login Options
           </Link>
           <img src={Logo} alt="Drifty Logo" className="admin-login-logo" />
           <h2>Admin Login</h2>

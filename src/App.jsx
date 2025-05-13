@@ -6,7 +6,6 @@ import CarDetailPage from "./component/cardetails/CarDetailPage";
 import Booking from "./component/Booking/Booking";
 import DetailsPage from "./component/DetailsPage/DetailsPage";
 import TermsAndPolicies from "./component/TermsAndPoliciesPage/TermsAndPoliciesPage";
-import KycVerification from "./component/KycVerification/KycVerification";
 // Import the new component
 import MainContent from "./dealsDetails/MainContent";
 import DriverVerification from "./dealsDetails/DriverVerification";
@@ -28,11 +27,12 @@ import ContactUsPage from "./component/ContactUs/ContactUsPage";
 import VerificationPage from "./VerificationPage/VerificationPage";
 import PaymentPage from "./component/Payment/PaymentPage"; // Import PaymentPage
 import OrderConfirmation from "./component/OrderConfirmation/OrderConfirmation"; // Import OrderConfirmation
-import "./App.css";
+// import "./App.css";
 
 // Import the new components for the nested routes
 import ActiveVechilesTable from "./dealsDetails/ActiveVechilesTable.jsx"; // Corrected import
 import PaymnetListing from "./dealsDetails/PaymnetListing.jsx"; // Corrected import
+import VehicleTable from "./dealsDetails/VehicleTable.jsx"; // Corrected import
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -65,10 +65,15 @@ function App() {
       <Route path="/home" element={<HomePage />} />
       <Route path="/" element={<LandingPage isLoggedIn={isLoggedIn} />} />
       <Route path="/search" element={<VehicleSearchPage />} />
-      <Route
+      {/* <Route
         path="/caryydetails/:id"
         element={<CarDetailPage isLoggedIn={isLoggedIn} />}
+      /> */}
+      <Route
+        path="/cardetails/:id"
+        element={<CarDetailPage isLoggedIn={isLoggedIn} />}
       />
+      s
       <Route path="/booking/:id" element={<Booking />} />
       <Route
         path="/admin/dashboard"
@@ -101,11 +106,8 @@ function App() {
       <Route path="/contact-us" element={<ContactUsPage />} />
       <Route path="/order-confirmed" element={<OrderConfirmation />} />
       <Route path="/details" element={<DetailsPage />} />
-      <Route path="/kyc-verification" element={<KycVerification />} />
-
       {/* Deals Details Routes (Nested) */}
       <Route path="/dealsdetails/*" element={<DealsDetailsRoutes />} />
-
       <Route path="/verification-details" element={<VerificationDetails />} />
     </Routes>
   );
@@ -115,6 +117,7 @@ function DealsDetailsRoutes() {
   return (
     <Routes>
       <Route index element={<MainContent />} />
+      <Route path="vehicle-table" element={<VehicleTable />} />
       <Route path="active-vehicles" element={<ActiveVechilesTable />} />
       <Route path="driver-verification" element={<DriverVerification />} />
       <Route path="user-verification" element={<UserVerification />} />
@@ -125,13 +128,73 @@ function DealsDetailsRoutes() {
 }
 
 export default App;
-// export default App;
-// // src/App.js
+// // export default App;
+// src/App.js
 // import React from "react";
 // import MainContent from "./dealsDetails/MainContent";
 
 // function App() {
 //   return <MainContent />;
+// }
+
+// export default App;
+
+// import React from "react";
+// import VehicleSearchPage from "./component/VehicleSearch/VehicleSearchPage";
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <VehicleSearchPage />
+//     </div>
+//   );
+// }
+
+// export default App;
+
+// // import React from "react";
+// // import { Routes, Route } from "react-router-dom";
+// // import HomePage from "./component/Landingpage/HomePage"; // Adjust the import according to your file structure
+// // import "./App.css";
+
+// // function App() {
+// //   return (
+// //     <Routes>
+// //       <Route path="/" element={<HomePage />} />{" "}
+// //       {/* Only show HomePage for the "/home" route */}
+// //     </Routes>
+// //   );
+// // }
+
+// // export default App;
+
+// // import React from "react";
+// // import { Routes, Route } from "react-router-dom";
+// // import LandingPage from "./component/Landingpage/Landingpage"; // Make sure the path is correct
+// // import "./App.css";
+
+// // function App() {
+// //   return (
+//     <Routes>
+//       <Route path="/" element={<LandingPage />} />{" "}
+//       {/* Only render LandingPage */}
+//     </Routes>
+//   );
+// }
+
+// export default App;
+
+// src/App.js
+// import React from "react";
+// import { Routes, Route } from "react-router-dom";
+// import KycVerification from "./component/KycVerification/KycVerification"; // Adjust path if different
+
+// function App() {
+//   return (
+//     <Routes>
+//       <Route path="/" element={<KycVerification />} />
+//     </Routes>
+//   );
 // }
 
 // export default App;

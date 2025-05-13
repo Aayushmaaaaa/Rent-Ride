@@ -28,6 +28,8 @@
               </div>
 
               <div className="navigation-links">
+                
+              <Link to="vehicle-table">Vehicles</Link>
                 <Link to="active-vehicles">Active Vehicles</Link>
                 <Link to="driver-verification">Driver Verification</Link>
                 <Link to="user-verification">User Verification</Link>

@@ -1,0 +1,376 @@
+/* Page container */
+.vehicleSearchWrapper {
+  all: initial; /* Reset inherited styles */
+  display: block;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  padding: 40px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.vehicleSearchPage {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top filter/search bar */
+.topFilterBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  background-color: #fff;
+  padding: 20px 30px;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  flex-wrap: wrap;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.dateTimeGroup {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.dateGroup,
+.timeGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.dateGroup label,
+.timeGroup label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.dateGroup input,
+.timeGroup input {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  width: 180px;
+}
+
+.searchBtn {
+  background-color: #2e86de;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.searchBtn:hover {
+  background-color: #1e6fce;
+}
+
+/* Main layout */
+.mainContent {
+  display: flex;
+  gap: 40px;
+  padding: 30px 0;
+  align-items: flex-start;
+  min-height: 0; /* Prevent stretching */
+  flex: 1;
+}
+
+/* Filters Sidebar */
+.vehicleFilters {
+  width: 260px;
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+}
+
+.vehicleFilters h2 {
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+
+.vehicleFilters h3 {
+  font-size: 16px;
+  margin: 20px 0 10px;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* Reduced gap between vehicle types */
+}
+
+.filterGroup label {
+  font-size: 14px;
+  cursor: pointer;
+  margin: 0; /* Remove default margin to reduce spacing */
+  line-height: 1.5; /* Adjust line-height for tighter spacing */
+}
+
+.priceSlider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: #ddd;
+  outline: none;
+  margin: 15px 0;
+}
+
+.priceSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #2e86de;
+  cursor: pointer;
+}
+
+.priceSlider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #2e86de;
+  cursor: pointer;
+  border: none;
+}
+
+.priceRange {
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.filterBtn {
+  margin-top: 14px;
+  padding: 10px;
+  background-color: #2ecc71;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.filterBtn:hover {
+  background-color: #27ae60;
+}
+
+/* Vehicle Cards */
+.vehicleResults {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  min-height: 0; /* Prevent stretching */
+}
+
+.vehicleCard {
+  background-color: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease-in-out;
+  will-change: transform;
+  position: relative;
+}
+
+.vehicleCard:hover {
+  transform: translateY(-5px);
+}
+
+.vehicleImg {
+  width: 100%;
+  height: 160px;
+  min-height: 160px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+  background-color: #f0f0f0;
+  background-image: linear-gradient(
+    45deg,
+    #ddd 25%,
+    transparent 25%,
+    transparent 75%,
+    #ddd 75%
+  );
+  background-size: 20px 20px;
+}
+
+.vehicleInfo {
+  padding: 16px;
+}
+
+.vehicleInfo h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: left; /* Ensure left alignment for car name */
+}
+
+.vehicleInfo p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #666;
+  text-align: left; /* Ensure left alignment for type, driver, booking */
+}
+
+.specs {
+  display: flex;
+  justify-content: space-between;
+  margin: 12px 0;
+  font-size: 14px;
+  color: #444;
+  text-align: left; /* Ensure left alignment for specs */
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  flex-wrap: wrap; /* Allow wrapping for better alignment on small screens */
+  gap: 8px; /* Add small gap for consistency */
+  width: 100%; /* Ensure full width for consistent layout */
+}
+
+.bottom p {
+  font-size: 14px; /* Match font size with buttons */
+  font-weight: normal; /* Remove bold to match buttons */
+  color: #333; /* Match color with Details button */
+  background-color: #f0f0f0; /* Match background with Details button */
+  padding: 8px 16px; /* Match padding with buttons */
+  border-radius: 6px; /* Match border-radius with buttons */
+  text-align: left; /* Ensure left alignment for price */
+  margin: 0; /* Remove default margin */
+  flex-shrink: 0; /* Prevent shrinking */
+  box-sizing: border-box; /* Ensure padding doesn’t affect width */
+}
+
+.cardButtons {
+  display: flex;
+  gap: 8px; /* Consistent gap between buttons */
+  align-items: center; /* Align buttons vertically with the price */
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.detailsBtn {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 8px 16px; /* Match padding with Reserve button and price */
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-weight: normal; /* Non-bold as per previous request */
+  font-size: 14px; /* Match font size with Reserve button and price */
+  box-sizing: border-box; /* Ensure padding doesn’t affect width */
+}
+
+.detailsBtn:hover {
+  background-color: #e1dada;
+}
+
+.reserveBtn {
+  background-color: #e67e22;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px; /* Match border-radius with Details button */
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+  font-weight: normal; /* Non-bold as per previous request */
+  box-sizing: border-box; /* Ensure padding doesn’t affect width */
+}
+
+.reserveBtn:hover {
+  background-color: #cf711b;
+}
+
+/* Responsive layout */
+@media (max-width: 900px) {
+  .vehicleSearchPage {
+    padding: 20px 15px;
+  }
+
+  .mainContent {
+    flex-direction: column;
+  }
+
+  .vehicleFilters {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .topFilterBar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .dateTimeGroup {
+    gap: 10px;
+  }
+
+  .dateGroup input,
+  .timeGroup input {
+    width: 100%;
+  }
+
+  .searchBtn {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .vehicleResults {
+    grid-template-columns: 1fr;
+    align-self: flex-start; /* Ensure height only grows with content */
+  }
+
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px; /* Consistent gap on small screens */
+  }
+
+  .bottom p {
+    width: 100%; /* Full width on small screens for consistency */
+    text-align: center; /* Center text on small screens for better appearance */
+  }
+
+  .cardButtons {
+    width: 100%; /* Full width on small screens */
+    justify-content: center; /* Center buttons on small screens */
+  }
+}
+
+/* Loading states */
+.vehicleResults:empty::before {
+  content: "Loading vehicles...";
+  display: block;
+  text-align: center;
+  padding: 40px;
+  color: #666;
+  grid-column: 1 / -1;
+}
+
+/* Button states */
+.reserveBtn:disabled,
+.filterBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}

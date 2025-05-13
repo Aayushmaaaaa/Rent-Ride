@@ -1,15 +1,16 @@
 import React from 'react';
 import './AboutUsPage.css';
 import { Link } from 'react-router-dom';
+import logo from "../Images/Logo.png";
 
 const AboutUsPage = () => {
   const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
   return (
     <div className="about-us-container">
       <header className="about-us-header">
-        <Link to="/" className="drifty-text-link">
-          <h1>Drifty</h1>
-        </Link>
+        <div className="navbar-left">
+          <img src={logo} alt="Drifty Logo" className="logo" />
+        </div>
         <Link to="/" className="go-to-home-link">
           {isLoggedIn ? "Go to Logged-in Homepage" : "Go to Homepage"}
         </Link>

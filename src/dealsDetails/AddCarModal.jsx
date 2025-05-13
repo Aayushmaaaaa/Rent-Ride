@@ -22,7 +22,7 @@ const AddCarModal = ({ isOpen, onClose }) => {
 
   const [previewUrls, setPreviewUrls] = useState([]);
 
-  const carTypes = ["Sedan", "SUV", "Mini Van", "Mini Van (EV)"];
+  const carTypes = ["Sedan", "SUV", "Mini Van", "Mini Van (EV)", "Sports Car"];
   const gearTypes = ["Manual", "Automatic"];
   const acOptions = ["Yes", "No"];
 

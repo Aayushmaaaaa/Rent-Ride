@@ -1,4 +1,4 @@
-/* src/component/Landingpage/LandingPage.css */
+/* Custom Properties (Variables) */
 :root {
   --primary-color: #4caf50;
   --primary-dark: #3e8e41;
@@ -13,42 +13,36 @@
   --transition: all 0.3s ease;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
+/* Main container */
+.appContainer {
+  all: initial; /* Reset inherited styles */
+  max-width: 1600px;
+  margin: 0 auto;
+  overflow-x: hidden;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   color: var(--text-medium);
   background-color: #ffffff;
 }
 
-.app-container {
-  max-width: 1600px;
-  margin: 0 auto;
-  overflow-x: hidden;
-}
-
-img {
+.appContainer img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-section {
+.appContainer section {
   padding: 80px 20px;
 }
 
-h2 {
+.appContainer h2 {
   font-size: 2.5rem;
   color: var(--text-dark);
   margin-bottom: 1.5rem;
 }
 
-.btn {
+/* Button Styles */
+.appContainer .btn {
   display: inline-block;
   padding: 12px 30px;
   border-radius: 5px;
@@ -59,33 +53,35 @@ h2 {
   border: none;
 }
 
-.btn-primary {
+.appContainer .btnPrimary {
   background-color: var(--primary-color);
   color: white;
 }
 
-.btn-primary:hover {
+.appContainer .btnPrimary:hover {
   background-color: var(--primary-dark);
   transform: translateY(-2px);
 }
 
-.btn-outline {
+.appContainer .btnOutline {
   background-color: transparent;
   color: var(--primary-color);
   border: 2px solid var(--primary-color);
 }
 
-.btn-outline:hover {
+.appContainer .btnOutline:hover {
   background-color: #f0f0f0;
 }
 
-.container {
+/* Container */
+.appContainer .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-.navbar {
+/* Navbar */
+.appContainer .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -97,29 +93,30 @@ h2 {
   z-index: 100;
 }
 
-.navbar img {
+.appContainer .logo {
   height: auto;
   width: 100px;
 }
 
-.nav-links {
+.appContainer .navLinks {
   display: flex;
   align-items: center;
   gap: 30px;
 }
 
-.nav-links a {
+.appContainer .navLinks a {
   text-decoration: none;
   color: var(--text-medium);
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
-.nav-links a:hover {
+.appContainer .navLinks a:hover {
   color: var(--primary-color);
 }
 
-.hero {
+/* Hero Section */
+.appContainer .hero {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -127,70 +124,76 @@ h2 {
   gap: 40px;
 }
 
-.hero-content {
+.appContainer .heroContent {
   flex: 1;
 }
 
-.hero h1 {
+.appContainer .hero h1 {
   font-size: 2.5rem;
   color: var(--text-dark);
   margin-bottom: 15px;
   line-height: 1.2;
 }
 
-.hero h2 {
+.appContainer .hero h2 {
   font-size: 1.8rem;
   color: var(--primary-color);
   font-weight: 500;
   margin-bottom: 20px;
 }
 
-.hero p {
+.appContainer .hero p {
   color: var(--text-light);
   margin-bottom: 30px;
   font-size: 1.1rem;
 }
 
-.hero-buttons {
+.appContainer .heroButtons {
   display: flex;
   gap: 1rem;
   margin-top: 2rem;
 }
 
-.hero-vehicle-container {
+.appContainer .heroVehicleContainer {
   flex: 1;
 }
 
-.vehicle-image {
+.appContainer .vehicleImage {
   border-radius: 10px;
   box-shadow: var(--shadow-md);
 }
 
-.route-map-wrapper {
+.appContainer .routeMapWrapper {
   flex: 1;
   display: flex;
   justify-content: center;
 }
 
-.benefits-container {
+.appContainer .routeMapImage {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Benefits Section */
+.appContainer .benefitsContainer {
   background-color: var(--bg-light);
   padding: 80px 0;
 }
 
-.benefits-title {
+.appContainer .benefitsTitle {
   text-align: left;
   margin-bottom: 40px;
   padding: 0 40px;
 }
 
-.benefits-content {
+.appContainer .benefitsContent {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   padding: 0 40px;
 }
 
-.benefits-list {
+.appContainer .benefitsList {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -198,13 +201,13 @@ h2 {
   flex: 1;
 }
 
-.benefit-item {
+.appContainer .benefitItem {
   margin-bottom: 40px;
   position: relative;
   padding-left: 50px;
 }
 
-.benefit-item::before {
+.appContainer .benefitItem::before {
   content: "✓";
   position: absolute;
   left: 0;
@@ -214,36 +217,37 @@ h2 {
   font-weight: bold;
 }
 
-.benefit-heading {
+.appContainer .benefitHeading {
   font-size: 1.5rem;
   color: var(--text-dark);
   margin-bottom: 10px;
 }
 
-.benefit-description {
+.appContainer .benefitContent p {
   color: #666;
   line-height: 1.6;
 }
 
-.feature-car-image {
+.appContainer .featureCarImage {
   width: 300px;
   margin-left: 40px;
 }
 
-.feature-car-image img {
+.appContainer .featureCarImage img {
   border-radius: 10px;
   box-shadow: var(--shadow-md);
   width: 100%;
 }
 
-.services {
+/* Services Section */
+.appContainer .services {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
   text-align: center;
 }
 
-.service {
+.appContainer .service {
   padding: 40px 30px;
   background-color: #ffffff;
   border-radius: 10px;
@@ -251,36 +255,36 @@ h2 {
   transition: var(--transition);
 }
 
-.service:hover {
+.appContainer .service:hover {
   transform: translateY(-10px);
   box-shadow: var(--shadow-md);
 }
 
-.service-icon {
+.appContainer .serviceIcon {
   font-size: 2.5rem;
   margin-bottom: 20px;
 }
 
-.service h3 {
+.appContainer .service h3 {
   font-size: 1.4rem;
   margin-bottom: 15px;
   color: var(--text-dark);
 }
 
-.featured-vehicles {
+/* Featured Vehicles Section */
+.appContainer .featuredVehicles {
   background-color: #fff;
   text-align: center;
 }
 
-/* New Vehicle Grid and Card Styling */
-.vehicle-grid {
+.appContainer .vehicleGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 30px;
   margin-top: 50px;
 }
 
-.vehicle-card {
+.appContainer .vehicleCard {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -293,21 +297,12 @@ h2 {
   text-align: left;
 }
 
-.vehicle-card:hover {
+.appContainer .vehicleCard:hover {
   transform: translateY(-10px);
   box-shadow: var(--shadow-lg);
 }
 
-/* Image Container for Consistent Height */
-.vehicle-card-image {
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  border-radius: 8px;
-  margin-bottom: 15px;
-}
-
-.vehicle-card-image {
+.appContainer .vehicleCardImage {
   width: 100%;
   height: 200px;
   overflow: hidden;
@@ -318,29 +313,30 @@ h2 {
   align-items: center;
   background-color: #f5f5f5;
 }
-.vehicle-card-image img {
+
+.appContainer .vehicleCardImage img {
   mix-blend-mode: multiply;
-  background-color: white; /* or match your card background */
+  background-color: white;
   object-fit: contain;
   max-width: 100%;
   max-height: 100%;
 }
 
-.vehicle-card h3 {
+.appContainer .vehicleCard h3 {
   font-size: 1.5rem;
   color: var(--text-dark);
   margin-bottom: 10px;
   text-align: left;
 }
 
-.vehicle-features {
+.appContainer .vehicleFeatures {
   list-style: none;
   margin: 15px 0;
   padding-left: 0;
   text-align: left;
 }
 
-.vehicle-features li {
+.appContainer .vehicleFeatures li {
   color: #666;
   margin-bottom: 8px;
   padding-left: 25px;
@@ -348,20 +344,20 @@ h2 {
   text-align: left;
 }
 
-.vehicle-features li::before {
+.appContainer .vehicleFeatures li::before {
   content: "•";
   color: var(--primary-color);
   position: absolute;
   left: 5px;
 }
 
-.vehicle-card .view-details-link {
-  margin-top: auto;
-  width: 100%;
-  text-decoration: none;
+.appContainer .vehicleRate {
+  font-weight: bold;
+  margin-top: 0.5rem;
+  color: #333;
 }
 
-.vehicle-card .view-details-btn {
+.appContainer .viewDetailsBtn {
   width: 100%;
   padding: 10px;
   background-color: #000;
@@ -374,105 +370,108 @@ h2 {
   margin-top: 10px;
 }
 
-.vehicle-card .view-details-btn:hover {
+.appContainer .viewDetailsBtn:hover {
   background-color: #333;
 }
 
 /* Loading & Error Messages */
-.loading-message,
-.error-message {
+.appContainer .loadingMessage,
+.appContainer .errorMessage {
   text-align: center;
   padding: 20px;
   font-size: 1.2rem;
   color: var(--text-medium);
 }
 
-.error-message {
+.appContainer .errorMessage {
   color: #d32f2f;
 }
 
-.testimonials-section {
+/* Testimonials Section */
+.appContainer .testimonialsSection {
   background-color: #fff;
 }
 
-.testimonial-grid {
+.appContainer .testimonialGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
   margin-top: 50px;
 }
 
-.testimonial-card {
+.appContainer .testimonialCard {
   background-color: var(--bg-light);
   padding: 30px;
   border-radius: 8px;
 }
 
-.testimonial-card p {
+.appContainer .testimonialCard p {
   color: #666;
   line-height: 1.8;
   margin-bottom: 25px;
 }
 
-.testimonial-author {
+.appContainer .testimonialAuthor {
   font-weight: 600;
   color: var(--text-dark);
 }
 
-.testimonial-author span {
+.appContainer .testimonialAuthor span {
   display: block;
   color: var(--text-light);
   font-style: italic;
 }
 
-.footer {
+/* Footer */
+.appContainer .footer {
   background-color: var(--bg-light);
   padding: 60px 0 30px;
 }
 
-.footer-columns {
+.appContainer .footerColumns {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 40px;
   margin-bottom: 40px;
 }
 
-.footer-section h4 {
+.appContainer .footerSection h4 {
   color: var(--text-dark);
   margin-bottom: 20px;
   text-transform: uppercase;
 }
 
-.footer-section ul {
+.appContainer .footerSection ul {
   list-style: none;
 }
 
-.footer-section li {
+.appContainer .footerSection li {
   margin-bottom: 12px;
 }
 
-.footer-section a {
+.appContainer .footerSection a {
   color: #666;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.footer-section a:hover {
+.appContainer .footerSection a:hover {
   color: var(--primary-color);
 }
 
-.copyright {
+.appContainer .copyright {
   text-align: center;
   padding-top: 30px;
   border-top: 1px solid var(--border-color);
   color: var(--text-light);
 }
 
-.text-center {
+/* Utility Classes */
+.appContainer .textCenter {
   text-align: center;
 }
 
-.highlight {
+.appContainer .highlight {
   display: inline-block;
   color: var(--primary-color);
   font-weight: 600;
@@ -481,41 +480,36 @@ h2 {
   border-radius: 4px;
 }
 
-.divider {
+.appContainer .divider {
   width: 100px;
   height: 2px;
   background-color: var(--border-color);
   margin: 40px auto;
 }
 
-.about-section {
+.appContainer .aboutSection {
   text-align: center;
 }
 
-.about-content {
+.appContainer .aboutContent {
   max-width: 800px;
   margin: 0 auto;
 }
 
-.stats-section {
+.appContainer .statsSection {
   text-align: center;
   padding: 80px 20px;
   background-color: #fff;
 }
 
-.stats-content {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.stats-section h2 {
+.appContainer .statsSection h2 {
   font-size: 4rem;
   color: var(--text-dark);
   margin-bottom: 20px;
 }
 
 /* Navigation Button */
-.signup-btn {
+.appContainer .signupBtn {
   background-color: #000;
   color: white;
   padding: 10px 24px;
@@ -526,12 +520,23 @@ h2 {
   transition: background-color 0.3s ease;
 }
 
-.signup-btn:hover {
+.appContainer .signupBtn:hover {
   background-color: #333;
 }
 
+.appContainer .profileBtn {
+  text-decoration: none;
+  color: var(--text-medium);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.appContainer .profileBtn:hover {
+  color: var(--primary-color);
+}
+
 /* Hero Section Buttons */
-.book-btn {
+.appContainer .bookBtn {
   background-color: #000;
   color: white;
   padding: 12px 32px;
@@ -542,11 +547,11 @@ h2 {
   transition: background-color 0.3s ease;
 }
 
-.book-btn:hover {
+.appContainer .bookBtn:hover {
   background-color: #333;
 }
 
-.video-btn {
+.appContainer .videoBtn {
   background-color: transparent;
   color: #000;
   padding: 12px 32px;
@@ -557,13 +562,13 @@ h2 {
   transition: all 0.3s ease;
 }
 
-.video-btn:hover {
+.appContainer .videoBtn:hover {
   background-color: #000;
   color: white;
 }
 
 /* About Section Button */
-.explore-button {
+.appContainer .exploreButton {
   background-color: #000;
   color: white;
   padding: 12px 32px;
@@ -575,23 +580,23 @@ h2 {
   margin-top: 1.5rem;
 }
 
-.explore-button:hover {
+.appContainer .exploreButton:hover {
   background-color: #333;
 }
 
 /* Global Button Focus State */
-button:focus {
+.appContainer button:focus {
   outline: 2px solid #0066cc;
   outline-offset: 2px;
 }
 
 /* Disable outline for mouse users */
-button:focus:not(:focus-visible) {
+.appContainer button:focus:not(:focus-visible) {
   outline: none;
 }
 
 /* Video Modal Styles */
-.video-modal {
+.appContainer .videoModal {
   position: fixed;
   top: 0;
   left: 0;
@@ -604,7 +609,7 @@ button:focus:not(:focus-visible) {
   z-index: 1000;
 }
 
-.video-modal-content {
+.appContainer .videoModalContent {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
@@ -614,33 +619,13 @@ button:focus:not(:focus-visible) {
   overflow: auto;
 }
 
-.video-modal-content video {
+.appContainer .videoModalContent video {
   display: block;
   max-width: 100%;
   height: auto;
 }
 
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  line-height: 1;
-  z-index: 1001;
-}
-
-.close-button:hover {
-  color: #000;
-}
-
-/* Make go-back-button match other buttons */
-.go-back-button {
+.appContainer .goBackButton {
   background-color: #000;
   color: white;
   padding: 10px 20px;
@@ -652,87 +637,88 @@ button:focus:not(:focus-visible) {
   margin-top: 15px;
 }
 
-.go-back-button:hover {
+.appContainer .goBackButton:hover {
   background-color: #333;
 }
 
+/* Responsive Design */
 @media (max-width: 1200px) {
-  .hero {
+  .appContainer .hero {
     flex-direction: column;
   }
 
-  .hero-content {
+  .appContainer .heroContent {
     text-align: center;
     margin-top: 40px;
   }
 
-  .hero-buttons {
+  .appContainer .heroButtons {
     justify-content: center;
   }
 
-  .benefits-content {
+  .appContainer .benefitsContent {
     flex-direction: column;
   }
 
-  .feature-car-image {
+  .appContainer .featureCarImage {
     margin: 40px auto 0;
   }
 }
 
 @media (max-width: 768px) {
-  section {
+  .appContainer section {
     padding: 60px 20px;
   }
 
-  .navbar {
+  .appContainer .navbar {
     flex-direction: column;
     gap: 15px;
     padding: 15px 20px;
   }
 
-  .nav-links {
+  .appContainer .navLinks {
     width: 100%;
     flex-wrap: wrap;
     justify-content: center;
   }
 
-  .hero {
+  .appContainer .hero {
     padding: 40px 20px;
   }
 
-  .hero h1 {
+  .appContainer .hero h1 {
     font-size: 2rem;
   }
 
-  .hero h2 {
+  .appContainer .hero h2 {
     font-size: 1.5rem;
   }
 
-  .benefits-title,
-  .benefits-content {
+  .appContainer .benefitsTitle,
+  .appContainer .benefitsContent {
     padding: 0 20px;
   }
 
-  .vehicle-grid {
+  .appContainer .vehicleGrid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
 }
 
 @media (max-width: 480px) {
-  .hero-buttons {
+  .appContainer .heroButtons {
     flex-direction: column;
     gap: 15px;
   }
 
-  .btn {
+  .appContainer .btn {
     width: 100%;
   }
 
-  .footer-columns {
+  .appContainer .footerColumns {
     grid-template-columns: 1fr;
   }
 
-  .vehicle-grid {
+  .appContainer .vehicleGrid {
     grid-template-columns: 1fr;
   }
 }

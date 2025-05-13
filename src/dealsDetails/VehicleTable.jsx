@@ -14,9 +14,7 @@ const columnHeadings = [
   "Car Number",
   "Phone Number",
   "Booking Type",
-  // "Booking Date",
   "Driver Name",
-  // "Status",
   "Location",
   "Actions",
 ];
@@ -55,9 +53,7 @@ const VehicleTable = () => {
           <thead className="table-header">
             <tr>
               {columnHeadings.map((heading, index) => (
-                <th key={index} scope="col">
-                  {heading}
-                </th>
+                <th key={index}>{heading}</th>
               ))}
             </tr>
           </thead>
@@ -67,7 +63,11 @@ const VehicleTable = () => {
                 <td className="table-cell">
                   <div className="car-photo">
                     <img
-                      src={`http://localhost:5000/uploads/${vehicle.photo}`}
+                      src={
+                        vehicle.photo?.length
+                          ? `http://localhost:5000/uploads/${vehicle.photo[0]}`
+                          : "https://via.placeholder.com/50" // fallback image
+                      }
                       alt="car"
                       style={{ width: "50px", height: "auto" }}
                     />
@@ -78,17 +78,11 @@ const VehicleTable = () => {
                 <td className="table-cell">{vehicle.seats}</td>
                 <td className="table-cell">{vehicle.gearType}</td>
                 <td className="table-cell">{vehicle.airCondition}</td>
-                <td className="table-cell">{vehicle.RatePerDay}</td>
-                {/* Replace with real rate if needed */}
+                <td className="table-cell">{vehicle.ratePerDay}</td>
                 <td className="table-cell">{vehicle.carNumber}</td>
                 <td className="table-cell">{vehicle.phoneNumber}</td>
                 <td className="table-cell">{vehicle.bookingType}</td>
-                {/* <td className="table-cell">N/A</td>{" "} */}
-                {/* Booking Date placeholder */}
-                {/* <td className="table-cell">N/A</td>{" "} */}
-                {/* Driver Name placeholder */}
-                {/* <td className="table-cell">N/A</td> Status placeholder */}
-                <td className="table-cell">N/A</td>
+                <td className="table-cell">{vehicle.driverName || "N/A"}</td>
                 <td className="table-cell">N/A</td>
                 <td className="table-cell actions-cell">
                   <button
